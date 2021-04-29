@@ -18,9 +18,9 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./user.html">
+                <a class="nav-link" href="{{ url('/cadastro') }}">
                     <i class="material-icons">person</i>
-                    <p>User Profile</p>
+                    <p>Cadastro</p>
                 </a>
             </li>
             <li class="nav-item ">
