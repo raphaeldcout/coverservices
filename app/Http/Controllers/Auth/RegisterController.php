@@ -46,10 +46,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    /*public function showRegistrationForm()
+    public function showRegistrationForm()
     {
         return redirect('login');
-    }*/
+    }
 
     protected function validator(array $data)
     {
