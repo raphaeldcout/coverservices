@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChamadosTable extends Migration
+class CreateAcompanhamentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateChamadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('chamados', function (Blueprint $table) {
+        Schema::create('acompanhamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('codigo_solicitante');
-            $table->integer('codigo_atendente')->nullable();
-            $table->integer('codigo_problema');
+            $table->integer('codigo_atendente');
+            $table->integer('codigo_chamado');
             $table->string('titulo');
             $table->text('descricao');
-            $table->string('status');
-            $table->integer('prioridade');
             $table->timestamps();
 
             $table->foreign('codigo_solicitante')
@@ -32,8 +30,8 @@ class CreateChamadosTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('codigo_problema')
-                ->references('id')->on('problemas')
+            $table->foreign('codigo_chamado')
+                ->references('id')->on('chamados')
                 ->onDelete('cascade');
         });
     }
@@ -45,6 +43,6 @@ class CreateChamadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chamados');
+        Schema::dropIfExists('acompanhamentos');
     }
 }

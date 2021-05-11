@@ -28,7 +28,7 @@ class ChamadosController extends Controller
     }
     public function criarChamado(Request $data)
     {
-        Chamado::create([
+        /*Chamado::create([
            'titulo' => $data['titulo'],
            'status' => $data['status'],
            'urgencia' => $data['urgencia'],
@@ -36,6 +36,6 @@ class ChamadosController extends Controller
            'descricao' => $data['descricao'],
            'resumo' => $data['resumo'],
            'anexo' => $data['anexo']
-        ]);
+        ]);*/
     }
 }
