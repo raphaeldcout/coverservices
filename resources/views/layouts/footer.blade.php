@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer" style="position: absolute; bottom: 0; width: 100%">
     <div class="container-fluid">
         <nav class="float-left">
             <ul>
