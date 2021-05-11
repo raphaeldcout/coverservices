@@ -33,25 +33,25 @@ $route = Route::current()->getName();
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./typography.html">
+                <a class="nav-link" href="#">
                     <i class="material-icons">library_books</i>
                     <p>Typography</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./icons.html">
+                <a class="nav-link" href="#">
                     <i class="material-icons">bubble_chart</i>
                     <p>Icons</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./map.html">
+                <a class="nav-link" href="#">
                     <i class="material-icons">location_ons</i>
                     <p>Maps</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./notifications.html">
+                <a class="nav-link" href="#">
                     <i class="material-icons">notifications</i>
                     <p>Notifications</p>
                 </a>
