@@ -1,3 +1,6 @@
+@php
+$route = Route::current()->getName();
+@endphp
 <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
     <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -11,44 +14,44 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active  ">
-                <a class="nav-link" href="./dashboard.html">
+            <li class="nav-item @if($route == 'dashboard') active @endif">
+                <a class="nav-link" href="{{ url('/') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item @if($route == 'cadastro') active @endif">
                 <a class="nav-link" href="{{ url('/cadastro') }}">
                     <i class="material-icons">person</i>
                     <p>Cadastro</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item @if($route == 'chamados') active @endif">
                 <a class="nav-link" href="{{ url('/chamados') }}">
                     <i class="material-icons">content_paste</i>
                     <p>Chamados</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./typography.html">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
                     <i class="material-icons">library_books</i>
                     <p>Typography</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./icons.html">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
                     <i class="material-icons">bubble_chart</i>
                     <p>Icons</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./map.html">
+                <a class="nav-link" href="#">
                     <i class="material-icons">location_ons</i>
                     <p>Maps</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./notifications.html">
+                <a class="nav-link" href="#">
                     <i class="material-icons">notifications</i>
                     <p>Notifications</p>
                 </a>
