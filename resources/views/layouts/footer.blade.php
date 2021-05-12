@@ -1,29 +1,34 @@
-<footer class="footer" style="position: absolute; bottom: 0; width: 100%">
+<!-- Modal -->
+<div class="modal fade" id="modalResponse" tabindex="-1" role="dialog" aria-labelledby="modalResponseLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-white">
+                <h5 class="modal-title" id="modalResponseLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="text-white" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                        {{$error}}
+                        <br>
+                    @endforeach
+                @endif
+                @if(session('success'))
+                    {{session('success')}}
+                @endif
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">Ok!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
     <div class="container-fluid">
-        <nav class="float-left">
-            <ul>
-                <li>
-                    <a href="https://www.creative-tim.com">
-                        Creative Tim
-                    </a>
-                </li>
-                <li>
-                    <a href="https://creative-tim.com/presentation">
-                        About Us
-                    </a>
-                </li>
-                <li>
-                    <a href="http://blog.creative-tim.com">
-                        Blog
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.creative-tim.com/license">
-                        Licenses
-                    </a>
-                </li>
-            </ul>
-        </nav>
         <div class="copyright float-right">
             &copy;
             <script>
@@ -77,6 +82,20 @@
 <script src="/demo/demo.js"></script>
 <script>
     $(document).ready(function() {
+
+        @if(count($errors) > 0)
+            $('#modalResponse').modal('show');
+            $('.modal-title').html('Ops! Ocorreu um erro.');
+            $('.modal-header').addClass('bg-danger');
+        @endif
+
+        @if(session('success'))
+            $('#modalResponse').modal('show');
+            $('.modal-title').html('Tudo certo!');
+            $('.modal-header').addClass('bg-success');
+        @endif
+
+
         $().ready(function() {
             $sidebar = $('.sidebar');
 

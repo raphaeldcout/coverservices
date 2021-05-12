@@ -28,14 +28,18 @@ class ChamadosController extends Controller
     }
     public function criarChamado(Request $data)
     {
+        //return redirect()->back()->withErrors(['message' => 'Mensagem de teste para testar a modal de error.']);
+
         Chamado::create([
-           'codigo_solicitante' => 1,
-           'codigo_atendente' => 1,
+           'codigo_solicitante' => auth()->user()->id,
+           'codigo_atendente' => null,
            'codigo_problema' => 1,
            'titulo' => $data['titulo'],
            'descricao' => $data['descricao'],
-           'status' => 'Ativo',
+           'status' => 'Aberto',
            'prioridade' => 1,
         ]);
+
+        return redirect()->back()->withSuccess('Chamado criado com sucesso.');
     }
 }
