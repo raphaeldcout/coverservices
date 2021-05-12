@@ -28,14 +28,14 @@ class ChamadosController extends Controller
     }
     public function criarChamado(Request $data)
     {
-        /*Chamado::create([
+        Chamado::create([
+           'codigo_solicitante' => 1,
+           'codigo_atendente' => 1,
+           'codigo_problema' => 1,
            'titulo' => $data['titulo'],
-           'status' => $data['status'],
-           'urgencia' => $data['urgencia'],
-           'prioridade' => $data['prioridade'],
            'descricao' => $data['descricao'],
-           'resumo' => $data['resumo'],
-           'anexo' => $data['anexo']
-        ]);*/
+           'status' => 'Ativo',
+           'prioridade' => 1,
+        ]);
     }
 }
