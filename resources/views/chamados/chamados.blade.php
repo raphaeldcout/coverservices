@@ -35,7 +35,10 @@
                                                 <label class="bmd-label-floating">Categoria do Chamado</label>
                                                 <select id="categoria" name="categoria" class="custom-select" required>
                                                     <option value="-1">-- Selecione --</option>
-                                                    <option value="1">Suporte Técnico</option>
+                                                    
+                                                    @foreach($categorias as $categoria)
+                                                        <option value="{{ $categoria['id'] }}">{{ $categoria['name'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -46,7 +49,7 @@
                                                 <label class="bmd-label-floating">Tipo de problema</label>
                                                 <select id="setor" name="setor" class="custom-select" required>
                                                     <option value="-1">-- Selecione --</option>
-                                                    <option value="1">Manutenção de impressora</option>
+
                                                 </select>
                                             </div>
                                         </div>
@@ -57,7 +60,7 @@
                                                 <label class="bmd-label-floating">Setor</label>
                                                 <select id="setor" name="setor" class="custom-select" required>
                                                     <option value="-1">-- Selecione --</option>
-                                                    <option value="1">Suporte Técnico de TI</option>
+
                                                 </select>
                                             </div>
                                         </div>
@@ -82,5 +85,5 @@
 </div>
 @endsection
 @section('scripts')
-    {{--<script src="/js/core/jquery.min.js"></script>--}}
+{{--<script src="/js/core/jquery.min.js"></script>--}}
 @endsection

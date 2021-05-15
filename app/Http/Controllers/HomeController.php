@@ -28,6 +28,10 @@ class HomeController extends Controller
 
     public function dashboard()
     {
+        if(auth()->user()->hierarquia == 1){
+            return redirect('/chamados');
+        }
+        
         return view('welcome');
     }
 }

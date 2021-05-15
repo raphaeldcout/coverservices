@@ -37,7 +37,7 @@ $route = Route::current()->getName();
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
                     <i class="material-icons">fact_check</i>
                     <p>Acomp. Chamados</p>
                 </a>

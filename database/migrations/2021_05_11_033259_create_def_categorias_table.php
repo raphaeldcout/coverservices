@@ -16,7 +16,7 @@ class CreateDefCategoriasTable extends Migration
         Schema::create('def_categorias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('apelido');
+            $table->string('apelido')->nullable();
             $table->integer('codigo_setor');
             $table->timestamps();
             

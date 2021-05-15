@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Chamado;
 use Illuminate\Http\Request;
+use App\Models\Chamado;
+use App\Models\def_categoria;
 
 class ChamadosController extends Controller
 {
@@ -23,8 +24,10 @@ class ChamadosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('chamados');
+    {   
+        $categorias = def_categoria::select('name', 'id')->get();
+        
+        return view('chamados.chamados', ['categorias' => $categorias->toArray()]);
     }
     public function criarChamado(Request $data)
     {
@@ -41,5 +44,10 @@ class ChamadosController extends Controller
         ]);
 
         return redirect()->back()->withSuccess('Chamado criado com sucesso.');
+    }
+    public function acompanharChamados()
+    {
+        $chamados = Chamado::retornaChamadosSolicitante(auth()->user()->id);
+        dd($chamados);
     }
 }
