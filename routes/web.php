@@ -17,3 +17,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/chamados', 'ChamadosController@index')->name('chamados');
 Route::get('/acompanhar/chamados', 'ChamadosController@acompanharChamados')->name('acompanhar_chamados');
 Route::post('/chamados', 'ChamadosController@criarChamado')->name('cadastrar_chamado');
+Route::post('/search/select/categoria', 'ChamadosController@searchCategoria');

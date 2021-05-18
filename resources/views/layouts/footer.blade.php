@@ -80,6 +80,7 @@
 <script src="/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="/demo/demo.js"></script>
+<script src="/js/chamados/chamado.js"></script>
 <script>
     $(document).ready(function() {
 

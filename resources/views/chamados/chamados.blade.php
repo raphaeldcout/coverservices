@@ -13,6 +13,7 @@
                             <div class="card-body">
                                 <form method="POST" action="{{route('cadastrar_chamado')}}" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden" name="_tokenvalue" value="{{ csrf_token() }}">
                                     <div class="row">
                                         <div class="col-md-9">
                                             <div class="form-group">
@@ -47,7 +48,7 @@
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Tipo de problema</label>
-                                                <select id="setor" name="setor" class="custom-select" required>
+                                                <select id="problema" name="problema" class="custom-select" required>
                                                     <option value="-1">-- Selecione --</option>
 
                                                 </select>
@@ -83,7 +84,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
-{{--<script src="/js/core/jquery.min.js"></script>--}}
 @endsection
