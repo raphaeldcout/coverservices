@@ -17,12 +17,7 @@ class CreateDefCategoriasTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('apelido')->nullable();
-            $table->integer('codigo_setor');
             $table->timestamps();
-            
-            $table->foreign('codigo_setor')
-                ->references('id')->on('setors')
-                ->onDelete('cascade');
         });
     }
 

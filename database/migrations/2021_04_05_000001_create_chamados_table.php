@@ -18,6 +18,7 @@ class CreateChamadosTable extends Migration
             $table->integer('codigo_solicitante');
             $table->integer('codigo_atendente')->nullable();
             $table->integer('codigo_problema');
+            $table->integer('codigo_setor');
             $table->string('titulo');
             $table->text('descricao');
             $table->string('status');
@@ -34,6 +35,10 @@ class CreateChamadosTable extends Migration
 
             $table->foreign('codigo_problema')
                 ->references('id')->on('problemas')
+                ->onDelete('cascade');
+
+            $table->foreign('codigo_setor')
+                ->references('id')->on('setors')
                 ->onDelete('cascade');
         });
     }
