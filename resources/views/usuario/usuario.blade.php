@@ -33,7 +33,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Senha</label>
-                                                <input type="password" id="senha" name="senha" class="form-control" required>
+                                                <input type="password" id="password" name="password" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>                                    

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -29,11 +30,10 @@ class UsuarioController extends Controller
     public function cadastrarUsuario(Request $data)
     {
         //return redirect()->back()->withErrors(['message' => 'Não foi possivel cadastrar Usuário.']);
-
         User::create([
            'name' => $data['nome'],
            'email' => $data['email'],
-          // 'password' => $data['password'],
+           'password' => Hash::make($data['password']),
            'hierarquia' => $data['hierarquia'],
         ]);
 
