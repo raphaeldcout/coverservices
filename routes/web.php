@@ -18,3 +18,9 @@ Route::get('/chamados', 'ChamadosController@index')->name('chamados');
 Route::get('/acompanhar/chamados', 'ChamadosController@acompanharChamados')->name('acompanhar_chamados');
 Route::post('/chamados', 'ChamadosController@criarChamado')->name('cadastrar_chamado');
 Route::post('/search/select/categoria', 'ChamadosController@searchCategoria');
+// Cadastro Setores
+Route::get('/setor', 'SetorController@index')->name('setor');
+Route::post('/setor', 'SetorController@cadastrarSetor')->name('cadastrar_setor');
+// Cadastro Usuario
+Route::get('/usuario', 'UsuarioController@index')->name('usuario');
+Route::post('/usuario', 'UsuarioController@cadastrarUsuario')->name('cadastrar_usuario');

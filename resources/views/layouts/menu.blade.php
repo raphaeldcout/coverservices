@@ -16,12 +16,6 @@ $route = Route::current()->getName();
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item @if($route == 'cadastro') active @endif">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">person</i>
-                    <p>Cadastros</p>
-                </a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="material-icons">build</i>
@@ -30,10 +24,25 @@ $route = Route::current()->getName();
             </li>
             @endif
 
+            @if(Auth::user()->hierarquia == 3)
+            <li class="nav-item @if($route == 'setor') active @endif">
+                <a class="nav-link" href="{{ url('/usuario') }}">
+                    <i class="material-icons">content_paste</i>
+                    <p>Usuário</p>
+                </a>
+            </li>
+            @endif
+
             <li class="nav-item @if($route == 'chamados') active @endif">
                 <a class="nav-link" href="{{ url('/chamados') }}">
                     <i class="material-icons">content_paste</i>
                     <p>Abrir Chamados</p>
+                </a>
+            </li>
+            <li class="nav-item @if($route == 'setor') active @endif">
+                <a class="nav-link" href="{{ url('/setor') }}">
+                    <i class="material-icons">content_paste</i>
+                    <p>Setor</p>
                 </a>
             </li>
             <li class="nav-item ">
