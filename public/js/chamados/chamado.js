@@ -20,7 +20,7 @@ $(document).ready(function () {
          success: function(data) {
             data = JSON.parse(JSON.stringify(data));
             problema = data.problemas;
-            setor    = data.setor;
+            
             $('#problema option').each(function(){
                 if($(this).val() != '-1'){
                     this.remove();
@@ -37,23 +37,7 @@ $(document).ready(function () {
                 
                 $('#problema').append(option);
 
-            })  
-            
-            $('#setor option').each(function(){
-                if($(this).val() != '-1'){
-                    this.remove();
-                }
-            })
-            setor.forEach((element,i)=>{
-                if(i == 0){
-                    option = $('<option selected value="' + element.id + '">' + element.name + '</option>');
-                }else{
-                    option = $('<option value="' + element.id + '">' + element.name + '</option>');
-                }
-                
-                $('#setor').append(option);
-
-            })  
+            })               
 
          },
          error: function(data) {

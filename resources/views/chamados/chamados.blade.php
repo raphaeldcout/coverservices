@@ -61,7 +61,9 @@
                                                 <label class="bmd-label-floating">Setor</label>
                                                 <select id="setor" name="setor" class="custom-select" required>
                                                     <option value="-1">-- Selecione --</option>
-
+                                                    @foreach($setores as $setor)
+                                                        <option value="{{ $setor['id'] }}">{{ $setor['name'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

@@ -29,8 +29,10 @@
         public function index()
         {
             $categorias = def_categoria::select('name', 'id')->get();
+            
+            $setores = Setor::select('name', 'id')->get();
 
-            return view('chamados.chamados', ['categorias' => $categorias->toArray()]);
+            return view('chamados.chamados', ['categorias' => $categorias->toArray(),'setores' => $setores->toArray()]);
         }
         public function criarChamado(Request $data)
         {
@@ -63,16 +65,14 @@
         public function acompanharChamados()
         {
             $chamados = Chamado::retornaChamadosSolicitante(auth()->user()->id);
-            dd($chamados);
+            return view('chamados.acompanhar', ['chamados' => $chamados->toArray()]);
         }
         public function searchCategoria(Request $data)
         {
             $categoria = $data->input('categoria');
-            $categorias = def_categoria::where('id', $categoria)->first();
             $problema = Problema::where('codigo_categoria', $categoria)->get();
-            $setor = Setor::where('id', $categorias->codigo_setor)->get();
 
-            $dados = ['problemas' => $problema, 'setor'=>$setor];
+            $dados = ['problemas' => $problema];
             return response()->json($dados,200);
         }
     }
