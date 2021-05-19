@@ -52,11 +52,12 @@
             Chamado::create([
                'codigo_solicitante' => auth()->user()->id,
                'codigo_atendente' => null,
-               'codigo_problema' => 1,
+               'codigo_problema' => $data['problema'],
+               'codigo_setor' => $data['setor'],
                'titulo' => $data['titulo'],
                'descricao' => $data['descricao'],
                'status' => 'Aberto',
-               'prioridade' => 1,
+               'prioridade' => null,
             ]);
 
             return redirect()->back()->withSuccess('Chamado criado com sucesso.');
