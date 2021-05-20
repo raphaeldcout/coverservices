@@ -48,7 +48,7 @@
                           </td>
                           <td>
                             <a href="{{ route('chamados', ['chamadoid' => $chamado['id'] ]) }}">
-                              <input id="editarChamado" type="button" class="btn btn-warning btn-link btn-sm">
+                              <input id="editarChamado" type="button" class="btn btn-warning btn-link btn-sm"><i class="material-icons">edit</i>                              
                             </a>
                           </td>
                         </tr>
