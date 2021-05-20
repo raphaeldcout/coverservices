@@ -15,29 +15,41 @@
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-info">
-                        <th>
-                          Código do Chamado
+                        <th style="text-align: center;">
+                          Código Chamado
                         </th>
-                        <th>
+                        <th style="text-align: center;">
                           Titulo Chamado
                         </th>
-                        <th>
+                        <th style="text-align: center;">
+                          Descrição Chamado
+                        </th>
+                        <th style="text-align: center;">
                           Data Abertura
+                        </th>
+                        <th style="text-align: center;">
+                          Editar
                         </th>
                       </thead>
                       <tbody>
                         @foreach($chamados as $chamado)
                         <tr>
-                          <td>
-                          {{ $chamado['id'] }}
+                          <td style="text-align: center;">
+                            <label id='idChamado'>{{ $chamado['id'] }}</label>
+                          </td>
+                          <td style="text-align: center;">
+                            <label id='tituloChamado'>{{ $chamado['titulo'] }}</label>
+                          </td>
+                          <td style="text-align: center;">
+                            <label id='tituloChamado'>{{ $chamado['descricao'] }}</label>
+                          </td>
+                          <td style="text-align: center;">
+                            <label id='dataChamado'>{{ $chamado['created_at'] }}<label>
                           </td>
                           <td>
-                          {{ $chamado['titulo'] }}
-                          </td>
-                          <td>
-                          {{ $chamado['created_at'] }}
-                          </td>
-                          <td>
+                            <a href="{{ route('chamados', ['chamadoid' => $chamado['id'] ]) }}">
+                              <input id="editarChamado" type="button" class="btn btn-warning btn-link btn-sm">
+                            </a>
                           </td>
                         </tr>
                         @endforeach                       

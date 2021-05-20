@@ -14,11 +14,23 @@
                                 <form method="POST" action="{{route('cadastrar_chamado')}}" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="_tokenvalue" value="{{ csrf_token() }}">
+                                    @if($editarChamado != null)    
+                                        @foreach($editarChamado as $editarChamados)                                                        
+                                        <input type="hidden" id="idChamado" name="idChamado" value="{{ $editarChamados['idChamado'] }}">
+                                        @endforeach
+                                    @endif
                                     <div class="row">
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Título Chamado</label>
-                                                <input type="text" id="titulo" name="titulo" class="form-control" required>
+                                                @if($editarChamado == null)                                                        
+                                                    <input type="text" id="titulo" name="titulo" class="form-control" required>
+                                                @else
+                                                    @foreach($editarChamado as $editarChamados)                                                        
+                                                        <input type="hidden" id="titulo" name="titulo" value="{{ $editarChamados['titulo'] }}">
+                                                        <input id="titulo" rows="5" name="titulo" value="{{ $editarChamados['titulo'] }}" class="form-control" required>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -26,21 +38,34 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Descreva o problema detalhadamente</label>
-                                                <textarea id="descricao" rows="5" name="descricao" class="form-control" required></textarea>
+                                                    @if($editarChamado == null)                                                        
+                                                        <textarea id="descricao" rows="5" name="descricao" class="form-control" required></textarea>
+                                                    @else
+                                                        @foreach($editarChamado as $editarChamados)                                                        
+                                                            <input type="hidden" id="descricao" name="descricao" value="{{ $editarChamados['descricao'] }}">
+                                                            <input id="descricao" rows="5" name="descricao" value="{{ $editarChamados['descricao'] }}" class="form-control" required>
+                                                        @endforeach
+                                                    @endif
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Categoria do Chamado</label>
-                                                <select id="categoria" name="categoria" class="custom-select" required>
-                                                    <option value="-1">-- Selecione --</option>
-                                                    
-                                                    @foreach($categorias as $categoria)
-                                                        <option value="{{ $categoria['id'] }}">{{ $categoria['name'] }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <label class="bmd-label-floating">Categoria do Chamado</label>                                                                                                 
+                                                    @if($editarChamado == null)
+                                                        <select id="categoria" name="categoria" class="custom-select" required>   
+                                                        <option value="-1">-- Selecione --</option>
+                                                            @foreach($categorias as $categoria)
+                                                                <option value="{{ $categoria['id'] }}">{{ $categoria['name'] }}</option>
+                                                            @endforeach                                                            
+                                                        </select>
+                                                    @else
+                                                        @foreach($editarChamado as $editarChamados)                                                        
+                                                            <input type="hidden" id="categoria" name="categoria" value="{{ $editarChamados['codigo_categoria'] }}_{{ $editarChamados['categoriaNome'] }}">
+                                                            <input readonly value="{{ $editarChamados['categoriaNome'] }}">
+                                                        @endforeach
+                                                    @endif
                                             </div>
                                         </div>
                                     </div>
@@ -48,10 +73,16 @@
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Tipo de problema</label>
-                                                <select id="problema" name="problema" class="custom-select" required>
-                                                    <option value="-1">-- Selecione --</option>
-
-                                                </select>
+                                                    @if($editarChamado == null)
+                                                        <select id="problema" name="problema" class="custom-select" required>   
+                                                            <option value="-1">-- Selecione --</option>                                                                                                                   
+                                                        </select>
+                                                    @else
+                                                        @foreach($editarChamado as $editarChamados)                                                        
+                                                            <input type="hidden" id="problema" name="problema" value="{{ $editarChamados['codigo_problema'] }}_{{ $editarChamados['problemaNome'] }}">
+                                                            <input readonly value="{{ $editarChamados['problemaNome'] }}">
+                                                        @endforeach
+                                                    @endif
                                             </div>
                                         </div>
                                     </div>
@@ -59,12 +90,16 @@
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Setor</label>
-                                                <select id="setor" name="setor" class="custom-select" required>
-                                                    <option value="-1">-- Selecione --</option>
-                                                    @foreach($setores as $setor)
-                                                        <option value="{{ $setor['id'] }}">{{ $setor['name'] }}</option>
-                                                    @endforeach
-                                                </select>
+                                                    @if($editarChamado == null)
+                                                        <select id="setor" name="setor" class="custom-select" required>   
+                                                            <option value="-1">-- Selecione --</option>                                                                                                                   
+                                                        </select>
+                                                    @else
+                                                        @foreach($editarChamado as $editarChamados)                                                        
+                                                            <input type="hidden" id="setor" name="setor" value="{{ $editarChamados['codigo_setor'] }}_{{ $editarChamados['setorNome'] }}">
+                                                            <input readonly value="{{ $editarChamados['setorNome'] }}">
+                                                        @endforeach
+                                                    @endif
                                             </div>
                                         </div>
                                     </div>

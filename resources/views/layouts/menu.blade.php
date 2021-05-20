@@ -1,7 +1,7 @@
 @php
 $route = Route::current()->getName();
 @endphp
-<div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="azure" data-background-color="white">
     <div class="logo">
         <a href="{{ url('/') }}" class="simple-text logo-normal">
             <img src="/img/logo.png" alt="logo">
