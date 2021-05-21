@@ -28,7 +28,7 @@
                                                 @else
                                                     @foreach($editarChamado as $editarChamados)                                                        
                                                         <input type="hidden" id="titulo" name="titulo" value="{{ $editarChamados['titulo'] }}">
-                                                        <input id="titulo" rows="5" name="titulo" value="{{ $editarChamados['titulo'] }}" class="form-control" required>
+                                                        <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['titulo'] }}" class="form-control" required>
                                                     @endforeach
                                                 @endif
                                             </div>
@@ -43,7 +43,7 @@
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                        
                                                             <input type="hidden" id="descricao" name="descricao" value="{{ $editarChamados['descricao'] }}">
-                                                            <input id="descricao" rows="5" name="descricao" value="{{ $editarChamados['descricao'] }}" class="form-control" required>
+                                                            <input id="descricao" style="color: black; border-color: transparent" rows="5" name="descricao" value="{{ $editarChamados['descricao'] }}" class="form-control" required>
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -63,7 +63,7 @@
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                        
                                                             <input type="hidden" id="categoria" name="categoria" value="{{ $editarChamados['codigo_categoria'] }}_{{ $editarChamados['categoriaNome'] }}">
-                                                            <input readonly value="{{ $editarChamados['categoriaNome'] }}">
+                                                            <input readonly style="color: black; border-color: transparent" value="{{ $editarChamados['categoriaNome'] }}">
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -80,7 +80,7 @@
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                        
                                                             <input type="hidden" id="problema" name="problema" value="{{ $editarChamados['codigo_problema'] }}_{{ $editarChamados['problemaNome'] }}">
-                                                            <input readonly value="{{ $editarChamados['problemaNome'] }}">
+                                                            <input readonly style="color: black;border-color: transparent" value="{{ $editarChamados['problemaNome'] }}">
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -92,12 +92,15 @@
                                                 <label class="bmd-label-floating">Setor</label>
                                                     @if($editarChamado == null)
                                                         <select id="setor" name="setor" class="custom-select" required>   
-                                                            <option value="-1">-- Selecione --</option>                                                                                                                   
+                                                            <option value="-1">-- Selecione --</option> 
+                                                            @foreach($setores as $setor) 
+                                                                <option value="{{ $setor['id'] }}">{{ $setor['name'] }}</option>
+                                                            @endforeach                                                                                                                                                                          
                                                         </select>
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                        
                                                             <input type="hidden" id="setor" name="setor" value="{{ $editarChamados['codigo_setor'] }}_{{ $editarChamados['setorNome'] }}">
-                                                            <input readonly value="{{ $editarChamados['setorNome'] }}">
+                                                            <input readonly style="color: black; border-color: transparent" value="{{ $editarChamados['setorNome'] }}">
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -110,7 +113,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
+                                    @if($editarChamado == null)
+                                        <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
+                                    @else
+                                        <button type="submit" class="btn btn-info pull-right">Editar chamado</button>
+                                    @endif
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

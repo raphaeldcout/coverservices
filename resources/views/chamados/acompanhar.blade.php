@@ -24,7 +24,7 @@
                         <th style="text-align: center;">
                           Descrição Chamado
                         </th>
-                        <th style="text-align: center;">
+                        <th id="dataChamado" style="text-align: center;">
                           Data Abertura
                         </th>
                         <th style="text-align: center;">
@@ -35,21 +35,21 @@
                         @foreach($chamados as $chamado)
                         <tr>
                           <td style="text-align: center;">
-                            <label id='idChamado'>{{ $chamado['id'] }}</label>
+                            <label id='idChamado'   style="color: black; text-align: center;border-color: transparent">{{ $chamado['idChamado'] }}</label>
                           </td>
                           <td style="text-align: center;">
-                            <label id='tituloChamado'>{{ $chamado['titulo'] }}</label>
+                            <label id='tituloChamado'style="color: black; text-align: center;border-color: transparent">{{ $chamado['titulo'] }}</label>
                           </td>
                           <td style="text-align: center;">
-                            <label id='tituloChamado'>{{ $chamado['descricao'] }}</label>
+                            <label id='tituloChamado'style="color: black; text-align: center; border-color: transparent">{{ $chamado['descricao'] }}</label>
                           </td>
                           <td style="text-align: center;">
-                            <label id='dataChamado'>{{ $chamado['created_at'] }}<label>
+                            <input value="{{ $chamado['created_at'] }}" style="text-align: center;border-color: transparent">
                           </td>
                           <td>
-                            <a href="{{ route('chamados', ['chamadoid' => $chamado['id'] ]) }}">
-                              <input id="editarChamado" type="button" class="btn btn-warning btn-link btn-sm"><i class="material-icons">edit</i>                              
-                            </a>
+                            <button type="button" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm">
+                              <a href="{{ route('chamados', ['chamadoid' => $chamado['idChamado'] ]) }}"><i class="material-icons">edit</i></a>
+                            </button>
                           </td>
                         </tr>
                         @endforeach                       

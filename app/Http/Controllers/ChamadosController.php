@@ -35,7 +35,6 @@
             }
             //dd($editarChamado);
             $setores = Setor::select('name', 'id')->get();
-
             return view('chamados.chamados', ['categorias' => $categorias->toArray(),'setores' => $setores->toArray(), 'editarChamado' => $editarChamado]);
         }
         public function criarChamado(Request $data)
@@ -94,6 +93,7 @@
         public function acompanharChamados()
         {
             $chamados = Chamado::retornaChamadosSolicitante(auth()->user()->id);
+            //dd($chamados);
             return view('chamados.acompanhar', ['chamados' => $chamados->toArray()]);
         }
         public function searchCategoria(Request $data)

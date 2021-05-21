@@ -1,6 +1,16 @@
 
 $(window).on("load",function () {    
     carregarProblema();
+    if($('#dataChamado').val() !== undefined){
+        $('table tr td input').each(function(){
+            var dataChamado = $(this).val()
+            dataChamado = dataChamado.split('-')
+            removeHora = dataChamado[2].split(' ')
+            $(this).val(removeHora[0]+'/'+dataChamado[1]+'/'+dataChamado[0])
+            //console.log(dataChamado)
+        })
+    }
+    
 })
 
 function carregarProblema(){
@@ -27,6 +37,7 @@ function carregarProblema(){
                var count = 0;
                var idSelect = '';
                
+                console.log(data)
                $('#problema option').each(function(){
                    if($(this).val() != '-1'){
                        this.remove();

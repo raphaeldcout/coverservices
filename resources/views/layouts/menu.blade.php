@@ -25,15 +25,15 @@ $route = Route::current()->getName();
             @endif
 
             @if(Auth::user()->hierarquia == 3)
-            <li class="nav-item @if($route == 'setor') active @endif">
+            <li class="nav-item @if($route == 'usuario') active @endif">
                 <a class="nav-link" href="{{ url('/usuario') }}">
-                    <i class="material-icons">content_paste</i>
+                    <i class="material-icons">person_add</i>
                     <p>Usuário</p>
                 </a>
             </li>
             <li class="nav-item @if($route == 'setor') active @endif">
                 <a class="nav-link" href="{{ url('/setor') }}">
-                    <i class="material-icons">content_paste</i>
+                    <i class="material-icons">account_tree</i>
                     <p>Setor</p>
                 </a>
             </li>
