@@ -26,12 +26,15 @@
          *
          * @return \Illuminate\Http\Response
          */
+
+
         public function index(Request $request)
         {
             $categorias = def_categoria::select('name', 'id')->get();            
             $editarChamado = null;
+            $usuarioLogado = auth()->user()->id;
             if($request->chamadoid != null){                
-                $editarChamado = Chamado::retornaDadosChamado($request->chamadoid);
+                $editarChamado = Chamado::retornaDadosChamado($request->chamadoid,$usuarioLogado);
             }
             //dd($editarChamado);
             $setores = Setor::select('name', 'id')->get();
@@ -39,8 +42,7 @@
         }
         public function criarChamado(Request $data)
         {
-            //dd($data);
-            //return redirect()->back()->withErrors(['message' => 'Mensagem de teste para testar a modal de error.']);
+            //dd($data);            
             $validate = request()->validate([
                 'titulo'    => ['required', 'string'],
                 'descricao' => ['required', 'string'],
@@ -73,6 +75,7 @@
                 $updateChamado->titulo = $data['titulo'];
                 $updateChamado->descricao = $data['descricao'];
                 $updateChamado->save();
+                return redirect()->route('acompanhar_chamados')->withSuccess('Chamado criado com sucesso.');
             }else{
                 Chamado::create([
                     'codigo_solicitante' => auth()->user()->id,
@@ -84,10 +87,8 @@
                     'status' => 'Aberto',
                     'prioridade' => null,
                  ]);
-            }
-            
-
-            return redirect()->back()->withSuccess('Chamado criado com sucesso.');
+                 return redirect()->back()->withSuccess('Chamado criado com sucesso.');
+            }            
         }
 
         public function acompanharChamados()
@@ -96,6 +97,7 @@
             //dd($chamados);
             return view('chamados.acompanhar', ['chamados' => $chamados->toArray()]);
         }
+
         public function searchCategoria(Request $data)
         {
             $categoria = $data->input('categoria');
@@ -103,5 +105,12 @@
 
             $dados = ['problemas' => $problema];
             return response()->json($dados,200);
+        }
+
+        public function gerenciarChamados()
+        {
+            $chamados = Chamado::gerenciarChamados(auth()->user()->id);
+            //dd($chamados);
+            return view('chamados.gerenciar', ['chamados' => $chamados->toArray()]);
         }
     }

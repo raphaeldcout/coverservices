@@ -17,7 +17,26 @@ class Chamado extends Model
                 ->orderBy('chamados.created_at', 'desc')
                 ->get();
     }
-    public static function retornaDadosChamado($codigo_usuario) {
-        return Chamado::select('chamados.id as idChamado','setors.name as setorNome','def_categorias.name as categoriaNome', 'problemas.name as problemaNome','chamados.*','def_categorias.*', 'problemas.*')->where('codigo_solicitante', $codigo_usuario)->join('problemas', 'problemas.id','chamados.codigo_problema')->join('def_categorias', 'def_categorias.id','problemas.codigo_categoria')->join('setors', 'setors.id','chamados.codigo_setor')->get();
+
+    public static function retornaDadosChamado($idChamado, $usuarioLogado) {
+        return Chamado::select('chamados.id as idChamado','setors.name as setorNome','def_categorias.name as categoriaNome', 
+                'problemas.name as problemaNome','chamados.*','def_categorias.*', 'problemas.*')
+                ->join('problemas', 'chamados.codigo_problema','=','problemas.id')
+                ->join('def_categorias','problemas.codigo_categoria','=', 'def_categorias.id')
+                ->join('setors', 'chamados.codigo_setor', '=', 'setors.id')
+                ->where('chamados.codigo_solicitante', $usuarioLogado)
+                ->where('chamados.id', $idChamado)
+                ->get();
     }
+
+    public static function gerenciarChamados($idChamado) {
+        return Chamado::select('chamados.id as idChamado','setors.name as setorNome','def_categorias.name as categoriaNome', 
+                'problemas.name as problemaNome','chamados.*','def_categorias.*', 'problemas.*')
+                ->join('problemas', 'chamados.codigo_problema','=','problemas.id')
+                ->join('def_categorias','problemas.codigo_categoria','=', 'def_categorias.id')
+                ->join('setors', 'chamados.codigo_setor', '=', 'setors.id')
+                ->where('chamados.id', $idChamado)
+                ->get();
+    }
+
 }

@@ -7,7 +7,6 @@ $(window).on("load",function () {
             dataChamado = dataChamado.split('-')
             removeHora = dataChamado[2].split(' ')
             $(this).val(removeHora[0]+'/'+dataChamado[1]+'/'+dataChamado[0])
-            //console.log(dataChamado)
         })
     }
     

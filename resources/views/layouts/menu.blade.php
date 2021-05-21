@@ -16,8 +16,8 @@ $route = Route::current()->getName();
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item @if($route == 'gerenciar_chamados') active @endif">
+            <a class="nav-link" href="{{ url('/gerenciar/chamados') }}">
                     <i class="material-icons">build</i>
                     <p>Gerenc. Chamados</p>
                 </a>
@@ -44,7 +44,7 @@ $route = Route::current()->getName();
                     <p>Abrir Chamados</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item @if($route == 'acompanhar_chamados') active @endif">
                 <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
                     <i class="material-icons">fact_check</i>
                     <p>Acomp. Chamados</p>
