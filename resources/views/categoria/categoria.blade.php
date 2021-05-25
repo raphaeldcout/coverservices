@@ -8,15 +8,15 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-header card-header-info">
-                                <h4 class="card-title">Cadastro de Setor</h4>
+                                <h4 class="card-title">Cadastro de Categoria</h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="{{route('cadastrar_setor')}}" enctype="multipart/form-data">
+                                <form method="POST" action="{{route('cadastrar_categoria')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-9">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do Setor</label>
+                                                <label class="bmd-label-floating">Nome</label>
                                                 <input type="text" id="nome" name="nome" class="form-control" required>
                                             </div>
                                         </div>
@@ -24,12 +24,12 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Apelido do Setor</label>
+                                                <label class="bmd-label-floating">Apelido</label>
                                                 <input type="text" id="apelido" name="apelido" class="form-control" required>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-info pull-right">Cadastrar Setor</button>
+                                    </div>                              
+                                    <button type="submit" class="btn btn-info pull-right">Cadastrar Categoria</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

@@ -37,6 +37,18 @@ $route = Route::current()->getName();
                     <p>Setor</p>
                 </a>
             </li>
+            <li class="nav-item @if($route == 'categoria') active @endif">
+                <a class="nav-link" href="{{ url('/categoria') }}">
+                    <i class="material-icons">backup_table</i>
+                    <p>Categoria</p>
+                </a>
+            </li>
+            <li class="nav-item @if($route == 'problema') active @endif">
+                <a class="nav-link" href="{{ url('/problema') }}">
+                    <i class="material-icons">calculate</i>
+                    <p>Problemas</p>
+                </a>
+            </li>
             @endif
             <li class="nav-item @if($route == 'chamados') active @endif">
                 <a class="nav-link" href="{{ url('/chamados') }}">
