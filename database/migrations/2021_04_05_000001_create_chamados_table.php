@@ -22,7 +22,7 @@ class CreateChamadosTable extends Migration
             $table->string('titulo');
             $table->text('descricao');
             $table->string('status');
-            $table->integer('prioridade');
+            $table->integer('prioridade')->nullable();
             $table->timestamps();
 
             $table->foreign('codigo_solicitante')
