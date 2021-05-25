@@ -1,5 +1,6 @@
 @php
 $route = Route::current()->getName();
+$route_view = ucwords(str_replace('_', ' ', $route));
 @endphp
 <div class="sidebar" data-color="azure" data-background-color="white">
     <div class="logo">
@@ -17,7 +18,7 @@ $route = Route::current()->getName();
                 </a>
             </li>
             <li class="nav-item @if($route == 'gerenciar_chamados') active @endif">
-            <a class="nav-link" href="{{ url('/gerenciar/chamados') }}">
+                <a class="nav-link" href="{{ url('/gerenciar/chamados') }}">
                     <i class="material-icons">build</i>
                     <p>Gerenc. Chamados</p>
                 </a>
@@ -70,7 +71,7 @@ $route = Route::current()->getName();
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:;">{{ ucwords($route) }}</a>
+                <a class="navbar-brand" href="javascript:;">{{ ucwords($route_view) }}</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
