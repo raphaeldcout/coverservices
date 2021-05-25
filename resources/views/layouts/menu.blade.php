@@ -58,14 +58,12 @@ $route_view = ucwords(str_replace('_', ' ', $route));
                     <p>Abrir Chamados</p>
                 </a>
             </li>            
-            @if(Auth::user()->hierarquia == 1)
-                <li class="nav-item @if($route == 'acompanhar_chamados') active @endif">
-                    <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
-                        <i class="material-icons">fact_check</i>
-                        <p>Acomp. Chamados</p>
-                    </a>
-                </li>
-            @endif    
+            <li class="nav-item @if($route == 'acompanhar_chamados') active @endif">
+                <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
+                    <i class="material-icons">fact_check</i>
+                    <p>Acomp. Chamados</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
