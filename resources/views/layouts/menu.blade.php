@@ -1,5 +1,6 @@
 @php
 $route = Route::current()->getName();
+$route_view = ucwords(str_replace('_', ' ', $route));
 @endphp
 <div class="sidebar" data-color="azure" data-background-color="white">
     <div class="logo">
@@ -37,6 +38,19 @@ $route = Route::current()->getName();
                     <p>Setor</p>
                 </a>
             </li>
+            <li class="nav-item @if($route == 'categoria') active @endif">
+                <a class="nav-link" href="{{ url('/categoria') }}">
+                    <i class="material-icons">backup_table</i>
+                    <p>Categoria</p>
+                </a>
+            </li>
+            <li class="nav-item @if($route == 'problema') active @endif">
+                <a class="nav-link" href="{{ url('/problema') }}">
+                    <i class="material-icons">calculate</i>
+                    <p>Problemas</p>
+                </a>
+            </li>
+            <hr>
             @endif
             <li class="nav-item @if($route == 'chamados') active @endif">
                 <a class="nav-link" href="{{ url('/chamados') }}">
@@ -60,7 +74,7 @@ $route = Route::current()->getName();
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:;">{{ ucwords($route) }}</a>
+                <a class="navbar-brand" href="javascript:;">{{ ucwords($route_view) }}</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>

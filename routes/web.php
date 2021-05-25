@@ -25,3 +25,9 @@ Route::post('/setor', 'SetorController@cadastrarSetor')->name('cadastrar_setor')
 // Cadastro Usuario
 Route::get('/usuario', 'UsuarioController@index')->name('usuario');
 Route::post('/usuario', 'UsuarioController@cadastrarUsuario')->name('cadastrar_usuario');
+// Cadastro Categoria
+Route::get('/categoria', 'CategoriaController@index')->name('categoria');
+Route::post('categoria', 'CategoriaController@cadastrarCategoria')->name('cadastrar_categoria');
+// Cadastro Problema
+Route::get('/problema', 'ProblemaController@index')->name('problema');
+Route::post('problema', 'ProblemaController@cadastrarProblema')->name('cadastrar_problema');

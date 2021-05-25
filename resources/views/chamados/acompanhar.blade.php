@@ -43,7 +43,9 @@
                             <label id='tituloChamado'style="color: black; text-align: center;border-color: transparent">{{ $chamado['titulo'] }}</label>
                           </td>
                           <td style="text-align: center;">
-                            <label id='tituloChamado'style="color: black; text-align: center; border-color: transparent">{{ $chamado['descricao'] }}</label>
+                            <label id='tituloChamado'style="color: black; text-align: center; border-color: transparent">
+                              {{ \Illuminate\Support\Str::limit($chamado['descricao'], 100, $end='...') }}
+                            </label>
                           </td>
                           <td style="text-align: center;">
                             <input value="{{ $chamado['created_at'] }}" style="text-align: center;border-color: transparent">
