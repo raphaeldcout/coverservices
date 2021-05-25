@@ -17,7 +17,7 @@ $route = Route::current()->getName();
                 </a>
             </li>
             <li class="nav-item @if($route == 'gerenciar_chamados') active @endif">
-            <a class="nav-link" href="{{ url('/gerenciar/chamados') }}">
+            <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
                     <i class="material-icons">build</i>
                     <p>Gerenc. Chamados</p>
                 </a>
@@ -43,13 +43,15 @@ $route = Route::current()->getName();
                     <i class="material-icons">content_paste</i>
                     <p>Abrir Chamados</p>
                 </a>
-            </li>
-            <li class="nav-item @if($route == 'acompanhar_chamados') active @endif">
-                <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
-                    <i class="material-icons">fact_check</i>
-                    <p>Acomp. Chamados</p>
-                </a>
-            </li>
+            </li>            
+            @if(Auth::user()->hierarquia == 1)
+                <li class="nav-item @if($route == 'acompanhar_chamados') active @endif">
+                    <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
+                        <i class="material-icons">fact_check</i>
+                        <p>Acomp. Chamados</p>
+                    </a>
+                </li>
+            @endif    
         </ul>
     </div>
 </div>

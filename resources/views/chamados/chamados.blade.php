@@ -28,7 +28,7 @@
                                                 @else
                                                     @foreach($editarChamado as $editarChamados)                                                        
                                                         <input type="hidden" id="titulo" name="titulo" value="{{ $editarChamados['titulo'] }}">
-                                                        <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['titulo'] }}" class="form-control" required>
+                                                        <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['titulo'] }}" class="form-control" readonly>
                                                     @endforeach
                                                 @endif
                                             </div>
@@ -43,7 +43,7 @@
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                        
                                                             <input type="hidden" id="descricao" name="descricao" value="{{ $editarChamados['descricao'] }}">
-                                                            <input id="descricao" style="color: black; border-color: transparent" rows="5" name="descricao" value="{{ $editarChamados['descricao'] }}" class="form-control" required>
+                                                            <input id="descricao" style="color: black; border-color: transparent" rows="5" name="descricao" value="{{ $editarChamados['descricao'] }}" class="form-control" readonly>
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -101,6 +101,23 @@
                                                         @foreach($editarChamado as $editarChamados)                                                        
                                                             <input type="hidden" id="setor" name="setor" value="{{ $editarChamados['codigo_setor'] }}_{{ $editarChamados['setorNome'] }}">
                                                             <input readonly style="color: black; border-color: transparent" value="{{ $editarChamados['setorNome'] }}">
+                                                        @endforeach
+                                                    @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Atribuir Chamado</label>
+                                                    @if($editarChamado != null)
+                                                        @foreach($editarChamado as $editarChamados)                                                        
+                                                        <select id="atendente" name="atendente" class="custom-select" required>   
+                                                            <option value="-1">-- Selecione --</option> 
+                                                            @foreach($usuarios as $usuario) 
+                                                                <option value="{{ $usuario['id'] }}">{{ $usuario['name'] }}</option>
+                                                            @endforeach                                                                                                                                                                          
+                                                        </select>
                                                         @endforeach
                                                     @endif
                                             </div>

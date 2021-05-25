@@ -27,9 +27,11 @@
                         <th id="dataChamado" style="text-align: center;">
                           Data Abertura
                         </th>
-                        <!-- <th style="text-align: center;">
-                          Editar -->
-                        <!-- </th> -->
+                        @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
+                          <th style="text-align: center;">
+                            Ações
+                          </th>
+                        @endif  
                       </thead>
                       <tbody>
                         @foreach($chamados as $chamado)
@@ -45,12 +47,14 @@
                           </td>
                           <td style="text-align: center;">
                             <input value="{{ $chamado['created_at'] }}" style="text-align: center;border-color: transparent">
-                          </td>
-                          <!-- <td>
+                          </td>                          
+                        @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
+                          <td>
                             <button type="button" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm">
-                              <a href="{{ route('chamados', ['chamadoid' => $chamado['idChamado'] ]) }}"><i class="material-icons">edit</i></a>
+                              <a href="{{ route('chamados', ['chamadoid' => $chamado['idChamado'] ]) }}"><i class="material-icons">grading</i></a>
                             </button>
-                          </td> -->
+                          </td>
+                        @endif  
                         </tr>
                         @endforeach                       
                       </tbody>

@@ -8,8 +8,9 @@
     use App\Models\Chamado;
     use App\Models\Setor;
     use App\Models\def_categoria;
+use App\User;
 
-    class ChamadosController extends Controller
+class ChamadosController extends Controller
     {
         /**
          * Create a new controller instance.
@@ -33,12 +34,16 @@
             $categorias = def_categoria::select('name', 'id')->get();            
             $editarChamado = null;
             $usuarioLogado = auth()->user()->id;
+            $usuarios = User::select('name', 'id')
+            ->where('hierarquia', 3)
+            ->orWhere('hierarquia', 2)
+            ->get();
             if($request->chamadoid != null){                
                 $editarChamado = Chamado::retornaDadosChamado($request->chamadoid,$usuarioLogado);
             }
             //dd($editarChamado);
             $setores = Setor::select('name', 'id')->get();
-            return view('chamados.chamados', ['categorias' => $categorias->toArray(),'setores' => $setores->toArray(), 'editarChamado' => $editarChamado]);
+            return view('chamados.chamados', ['categorias' => $categorias->toArray(),'setores' => $setores->toArray(), 'editarChamado' => $editarChamado, 'usuarios' => $usuarios->toArray()]);
         }
         public function criarChamado(Request $data)
         {
@@ -72,8 +77,10 @@
             if($data['idChamado'] != null){
                 //dd(intval($data['idChamado']));
                 $updateChamado = Chamado::where('id', $data['idChamado'])->first();
+                dd($updateChamado);
                 $updateChamado->titulo = $data['titulo'];
                 $updateChamado->descricao = $data['descricao'];
+                $updateChamado->codigo_atendente = $data['atendente'];
                 $updateChamado->save();
                 return redirect()->route('acompanhar_chamados')->withSuccess('Chamado criado com sucesso.');
             }else{
@@ -102,15 +109,8 @@
         {
             $categoria = $data->input('categoria');
             $problema = Problema::where('codigo_categoria', $categoria)->get();
-
             $dados = ['problemas' => $problema];
             return response()->json($dados,200);
         }
 
-        public function gerenciarChamados()
-        {
-            $chamados = Chamado::gerenciarChamados(auth()->user()->id);
-            //dd($chamados);
-            return view('chamados.gerenciar', ['chamados' => $chamados->toArray()]);
-        }
     }
