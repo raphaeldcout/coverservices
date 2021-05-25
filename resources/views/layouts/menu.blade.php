@@ -51,6 +51,7 @@ $route_view = ucwords(str_replace('_', ' ', $route));
                 </a>
             </li>
             @endif
+            <hr>
             <li class="nav-item @if($route == 'chamados') active @endif">
                 <a class="nav-link" href="{{ url('/chamados') }}">
                     <i class="material-icons">content_paste</i>
