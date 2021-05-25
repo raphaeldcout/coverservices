@@ -39,7 +39,7 @@ class ChamadosController extends Controller
             ->orWhere('hierarquia', 2)
             ->get();
             if($request->chamadoid != null){                
-                $editarChamado = Chamado::retornaDadosChamado($request->chamadoid,$usuarioLogado);
+                $editarChamado = Chamado::retornaDadosChamado($request->chamadoid, $usuarioLogado);
             }
             //dd($editarChamado);
             $setores = Setor::select('name', 'id')->get();
@@ -101,6 +101,13 @@ class ChamadosController extends Controller
         public function acompanharChamados()
         {
             $chamados = Chamado::retornaChamadosSolicitante(auth()->user()->id);
+            //dd($chamados);
+            return view('chamados.acompanhar', ['chamados' => $chamados->toArray()]);
+        }
+
+        public function gerenciarChamados()
+        {
+            $chamados = Chamado::retornaTodosOsChamados();
             //dd($chamados);
             return view('chamados.acompanhar', ['chamados' => $chamados->toArray()]);
         }

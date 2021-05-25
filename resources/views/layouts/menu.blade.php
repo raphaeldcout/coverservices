@@ -18,7 +18,7 @@ $route_view = ucwords(str_replace('_', ' ', $route));
                 </a>
             </li>
             <li class="nav-item @if($route == 'gerenciar_chamados') active @endif">
-            <a class="nav-link" href="{{ url('/acompanhar/chamados') }}">
+            <a class="nav-link" href="{{ url('/gerenciar/chamados') }}">
                     <i class="material-icons">build</i>
                     <p>Gerenc. Chamados</p>
                 </a>

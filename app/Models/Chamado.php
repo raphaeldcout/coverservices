@@ -10,6 +10,13 @@ class Chamado extends Model
         'id', 'codigo_solicitante', 'codigo_atendente', 'codigo_problema', 'codigo_setor', 'titulo', 'descricao', 'status', 'prioridade'
     ];
 
+    public static function retornaTodosOsChamados() {
+        return Chamado::select('chamados.id as idChamado', 'chamados.titulo', 'chamados.descricao', 'chamados.created_at')
+                ->join('problemas', 'problemas.id','=','chamados.codigo_problema')
+                ->orderBy('chamados.created_at', 'desc')
+                ->get();
+    }
+
     public static function retornaChamadosSolicitante($codigo_usuario) {
         return Chamado::select('chamados.id as idChamado', 'chamados.titulo', 'chamados.descricao', 'chamados.created_at')
                 ->join('problemas', 'problemas.id','=','chamados.codigo_problema')
@@ -24,8 +31,9 @@ class Chamado extends Model
                 ->join('problemas', 'chamados.codigo_problema','=','problemas.id')
                 ->join('def_categorias','problemas.codigo_categoria','=', 'def_categorias.id')
                 ->join('setors', 'chamados.codigo_setor', '=', 'setors.id')
-                ->where('chamados.codigo_solicitante', $usuarioLogado)
-                ->where('chamados.id', $idChamado)
+                ->where([
+                    ['chamados.id', $idChamado]
+                ])
                 ->get();
     }
 
