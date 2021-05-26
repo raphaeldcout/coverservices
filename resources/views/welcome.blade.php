@@ -9,7 +9,7 @@
                         <div class="card-icon">
                             <i class="material-icons">info_outline</i>
                         </div>
-                        <p class="card-category">Chamados</p>
+                        <p class="card-category">Chamados Hoje</p>
                         <h3 class="card-title">
                             <small>{{ $total_chamados }}</small>
                         </h3>
@@ -36,14 +36,14 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">bug_report</i>
                         </div>
-                        <p class="card-category">Fixed Issues</p>
+                        <p class="card-category">Total de Chamados</p>
                         <h3 class="card-title">75</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">local_offer</i> Tracked from Github
+                            <i class="material-icons">update</i> Just Updated
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                             <i class="material-icons">verified</i>
                         </div>
                         <p class="card-category">Problemas Resolvidos</p>
-                        <h3 class="card-title">$34,245</h3>
+                        <h3 class="card-title">34.245</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -72,8 +72,8 @@
                         <div class="card-icon">
                             <i class="material-icons">badge</i>
                         </div>
-                        <p class="card-category">Followers</p>
-                        <h3 class="card-title">+245</h3>
+                        <p class="card-category">Minhas atribuições</p>
+                        <h3 class="card-title">245</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -90,7 +90,7 @@
                         <div class="ct-chart" id="dailySalesChart"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Daily Sales</h4>
+                        <h4 class="card-title">Chamados por Dia</h4>
                         <p class="card-category">
                             <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.
                         </p>
@@ -108,7 +108,7 @@
                         <div class="ct-chart" id="websiteViewsChart"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Email Subscriptions</h4>
+                        <h4 class="card-title">Problemas por Setores</h4>
                         <p class="card-category">Last Campaign Performance</p>
                     </div>
                     <div class="card-footer">
