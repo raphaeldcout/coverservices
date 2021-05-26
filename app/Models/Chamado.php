@@ -47,4 +47,10 @@ class Chamado extends Model
                 ->get();
     }
 
+    public static function verificaAtribuicao($idChamado) {
+        return Chamado::select('codigo_atendente')
+                ->where('id', $idChamado)
+                ->first();
+    }
+
 }

@@ -31,23 +31,32 @@ class ChamadosController extends Controller
 
         public function index(Request $request)
         {
-            $categorias = def_categoria::select('name', 'id')->get();            
+            $categorias = def_categoria::select('name', 'id')->get();   
+
             $editarChamado = null;
+
+            $atribuido = null;
+
             $usuarioLogado = auth()->user()->id;
+
             $usuarios = User::select('name', 'id')
             ->where('hierarquia', 3)
             ->orWhere('hierarquia', 2)
             ->get();
+
             if($request->chamadoid != null){                
                 $editarChamado = Chamado::retornaDadosChamado($request->chamadoid, $usuarioLogado);
+                $atribuido = Chamado::verificaAtribuicao($request->chamadoid);
             }
-            //dd($editarChamado);
+            //dd($atribuido);
             $setores = Setor::select('name', 'id')->get();
-            return view('chamados.chamados', ['categorias' => $categorias->toArray(),'setores' => $setores->toArray(), 'editarChamado' => $editarChamado, 'usuarios' => $usuarios->toArray()]);
+            return view('chamados.chamados', ['categorias' => $categorias->toArray(),'setores' => $setores->toArray(), 
+                        'editarChamado' => $editarChamado, 'atendentes' => $usuarios, 'alterar' => $atribuido]);
         }
+
+
         public function criarChamado(Request $data)
-        {
-            //dd($data);            
+        {             
             $validate = request()->validate([
                 'titulo'    => ['required', 'string'],
                 'descricao' => ['required', 'string'],

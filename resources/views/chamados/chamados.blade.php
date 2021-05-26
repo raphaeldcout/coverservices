@@ -27,7 +27,7 @@
                                                     <input type="text" id="titulo" name="titulo" class="form-control" required>
                                                 @else
                                                     @foreach($editarChamado as $editarChamados)                                                   
-                                                        <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['titulo'] }}" class="form-control" readonly>
+                                                        <input id="titulo" name="titulo" rows="5" style="color: black; border-color: transparent" value="{{ $editarChamados['titulo'] }}" class="form-control" readonly>
                                                     @endforeach
                                                 @endif
                                             </div>
@@ -41,7 +41,7 @@
                                                         <textarea id="descricao" rows="5" name="descricao" class="form-control" required></textarea>
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)
-                                                            <textarea id="descricao" rows="5" name="descricao" class="form-control" readonly>{{ $editarChamados['descricao'] }}</textarea>                                                        
+                                                            <textarea id="descricao" name="descricao" rows="5" class="form-control" readonly>{{ $editarChamados['descricao'] }}</textarea>                                                        
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -60,7 +60,7 @@
                                                         </select>
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                        
-                                                            <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['categoriaNome'] }}" class="form-control" readonly>
+                                                            <input id="categoria"  name="categoria" rows="5" style="color: black; border-color: transparent" value="{{ $editarChamados['categoriaNome'] }}" class="form-control" readonly>
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -76,7 +76,7 @@
                                                         </select>
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                         
-                                                            <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['problemaNome'] }}" class="form-control" readonly>
+                                                            <input id="problema" name="problema" rows="5" style="color: black; border-color: transparent" value="{{ $editarChamados['problemaNome'] }}" class="form-control" readonly>
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -94,8 +94,8 @@
                                                             @endforeach                                                                                                                                                                          
                                                         </select>
                                                     @else
-                                                        @foreach($editarChamado as $editarChamados)                                                         
-                                                            <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['setorNome'] }}" class="form-control" readonly>
+                                                        @foreach($editarChamado as $editarChamados)                                                     
+                                                            <input id="setor" name="setor" rows="5" style="color: black; border-color: transparent"  value="{{ $editarChamados['setorNome'] }}" class="form-control" readonly>
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -103,21 +103,23 @@
                                     </div>
                                         @if($editarChamado != null)
                                             @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
-                                                @foreach($editarChamado as $editarChamados)
-                                                    <div class="row">
-                                                        <div class="col-md-9">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Atribuir Chamado</label>                                           
-                                                                    <select id="atendente" name="atendente" class="custom-select" required>   
-                                                                        <option value="-1">-- Selecione --</option> 
-                                                                        @foreach($usuarios as $usuario) 
-                                                                            <option value="{{ $usuario['id'] }}">{{ ucwords($usuario['name']) }}</option>
-                                                                        @endforeach                                                                                                                                                                          
-                                                                    </select>
-                                                            </div>                                   
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating">Atribuir Chamado</label>                                           
+                                                            <select id="atendente" name="atendente" class="custom-select" required>   
+                                                                <option value="-1">-- Selecione --</option> 
+                                                                @foreach($atendentes as $atendente) 
+                                                                    @if($alterar['codigo_atendente'] == $atendente['id']){
+                                                                        <option value="{{ $atendente['id'] }}" selected>{{ ucwords($atendente['name']) }}</option> 
+                                                                    }@else
+                                                                        <option value="{{ $atendente['id'] }}">{{ ucwords($atendente['name']) }}</option>
+                                                                    @endif
+                                                                @endforeach                                                                                                                                                                          
+                                                            </select>
+                                                        </div>                                   
                                                     </div>
-                                                @endforeach 
+                                                </div>
                                             @endif    
                                         @endif  
                                     <div class="row" style="margin-top: 50px">
