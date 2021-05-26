@@ -21,6 +21,13 @@
                             <a href="{{ url('/gerenciar/chamados') }}">Existe chamados sem atribuição</a>
                         </div>
                     </div>
+                    @else
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons text-success">verified_user</i>
+                            <a href="{{ url('/gerenciar/chamados') }}">Todos os chamados estão atribuídos</a>
+                        </div>
+                    </div>
                     @endif
                 </div>
             </div>
