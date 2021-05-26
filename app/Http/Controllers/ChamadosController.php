@@ -77,12 +77,13 @@ class ChamadosController extends Controller
             if($data['idChamado'] != null){
                 //dd(intval($data['idChamado']));
                 $updateChamado = Chamado::where('id', $data['idChamado'])->first();
-                dd($updateChamado);
+                //dd($updateChamado);
                 $updateChamado->titulo = $data['titulo'];
                 $updateChamado->descricao = $data['descricao'];
                 $updateChamado->codigo_atendente = $data['atendente'];
                 $updateChamado->save();
-                return redirect()->route('acompanhar_chamados')->withSuccess('Chamado criado com sucesso.');
+                return redirect()->back()->withSuccess('Chamado editado com sucesso.');
+                //return redirect()->route('acompanhar_chamados')->withSuccess('Chamado criado com sucesso.');
             }else{
                 Chamado::create([
                     'codigo_solicitante' => auth()->user()->id,
