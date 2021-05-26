@@ -82,6 +82,10 @@ class ChamadosController extends Controller
                 $categoria = explode('_', $data['categoria']);
                 $data['categoria'] = $categoria[0];
             }
+            
+            if($data['atendente'] == -1){
+                $data['atendente'] = null;
+            }
 
             if($data['idChamado'] != null){
                 //dd(intval($data['idChamado']));
