@@ -26,8 +26,7 @@
                                                 @if($editarChamado == null)                                                        
                                                     <input type="text" id="titulo" name="titulo" class="form-control" required>
                                                 @else
-                                                    @foreach($editarChamado as $editarChamados)                                                        
-                                                        <input type="hidden" id="titulo" name="titulo" value="{{ $editarChamados['titulo'] }}">
+                                                    @foreach($editarChamado as $editarChamados)                                                   
                                                         <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['titulo'] }}" class="form-control" readonly>
                                                     @endforeach
                                                 @endif
@@ -41,9 +40,8 @@
                                                     @if($editarChamado == null)                                                        
                                                         <textarea id="descricao" rows="5" name="descricao" class="form-control" required></textarea>
                                                     @else
-                                                        @foreach($editarChamado as $editarChamados)                                                        
-                                                            <input type="hidden" id="descricao" name="descricao" value="{{ $editarChamados['descricao'] }}">
-                                                            <input id="descricao" style="color: black; border-color: transparent" rows="5" name="descricao" value="{{ $editarChamados['descricao'] }}" class="form-control" readonly>
+                                                        @foreach($editarChamado as $editarChamados)
+                                                            <textarea id="descricao" rows="5" name="descricao" class="form-control" readonly>{{ $editarChamados['descricao'] }}</textarea>                                                        
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -62,8 +60,7 @@
                                                         </select>
                                                     @else
                                                         @foreach($editarChamado as $editarChamados)                                                        
-                                                            <input type="hidden" id="categoria" name="categoria" value="{{ $editarChamados['codigo_categoria'] }}_{{ $editarChamados['categoriaNome'] }}">
-                                                            <input readonly style="color: black; border-color: transparent" value="{{ $editarChamados['categoriaNome'] }}">
+                                                            <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['categoriaNome'] }}" class="form-control" readonly>
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -78,9 +75,8 @@
                                                             <option value="-1">-- Selecione --</option>                                                                                                                   
                                                         </select>
                                                     @else
-                                                        @foreach($editarChamado as $editarChamados)                                                        
-                                                            <input type="hidden" id="problema" name="problema" value="{{ $editarChamados['codigo_problema'] }}_{{ $editarChamados['problemaNome'] }}">
-                                                            <input readonly style="color: black;border-color: transparent" value="{{ $editarChamados['problemaNome'] }}">
+                                                        @foreach($editarChamado as $editarChamados)                                                         
+                                                            <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['problemaNome'] }}" class="form-control" readonly>
                                                         @endforeach
                                                     @endif
                                             </div>
@@ -98,31 +94,32 @@
                                                             @endforeach                                                                                                                                                                          
                                                         </select>
                                                     @else
-                                                        @foreach($editarChamado as $editarChamados)                                                        
-                                                            <input type="hidden" id="setor" name="setor" value="{{ $editarChamados['codigo_setor'] }}_{{ $editarChamados['setorNome'] }}">
-                                                            <input readonly style="color: black; border-color: transparent" value="{{ $editarChamados['setorNome'] }}">
+                                                        @foreach($editarChamado as $editarChamados)                                                         
+                                                            <input id="titulo" rows="5" style="color: black; border-color: transparent" name="titulo" value="{{ $editarChamados['setorNome'] }}" class="form-control" readonly>
                                                         @endforeach
                                                     @endif
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Atribuir Chamado</label>
-                                                    @if($editarChamado != null)
-                                                        @foreach($editarChamado as $editarChamados)                                                        
-                                                        <select id="atendente" name="atendente" class="custom-select" required>   
-                                                            <option value="-1">-- Selecione --</option> 
-                                                            @foreach($usuarios as $usuario) 
-                                                                <option value="{{ $usuario['id'] }}">{{ $usuario['name'] }}</option>
-                                                            @endforeach                                                                                                                                                                          
-                                                        </select>
-                                                        @endforeach
-                                                    @endif
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @if($editarChamado != null)
+                                            @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
+                                                @foreach($editarChamado as $editarChamados)
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Atribuir Chamado</label>                                           
+                                                                    <select id="atendente" name="atendente" class="custom-select" required>   
+                                                                        <option value="-1">-- Selecione --</option> 
+                                                                        @foreach($usuarios as $usuario) 
+                                                                            <option value="{{ $usuario['id'] }}">{{ ucwords($usuario['name']) }}</option>
+                                                                        @endforeach                                                                                                                                                                          
+                                                                    </select>
+                                                            </div>                                   
+                                                        </div>
+                                                    </div>
+                                                @endforeach 
+                                            @endif    
+                                        @endif  
                                     <div class="row" style="margin-top: 50px">
                                         <div class="col-md-9">
                                             <div>
@@ -133,7 +130,9 @@
                                     @if($editarChamado == null)
                                         <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
                                     @else
-                                        <button type="submit" class="btn btn-info pull-right">Editar chamado</button>
+                                        @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
+                                            <button type="submit" class="btn btn-info pull-right">Atualizar Chamado</button>
+                                        @endif    
                                     @endif
                                     <div class="clearfix"></div>
                                 </form>

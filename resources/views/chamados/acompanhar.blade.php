@@ -31,6 +31,10 @@
                           <th style="text-align: center;">
                             Ações
                           </th>
+                          @else
+                          <th style="text-align: center;">
+                            Visualizar
+                          </th>
                         @endif  
                       </thead>
                       <tbody>
@@ -56,6 +60,12 @@
                               <a href="{{ route('chamados', ['chamadoid' => $chamado['idChamado'] ]) }}"><i class="material-icons">grading</i></a>
                             </button>
                           </td>
+                          @else
+                            <td>
+                              <button type="button" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm">
+                                <a href="{{ route('chamados', ['chamadoid' => $chamado['idChamado'] ]) }}"><i class="material-icons">visibility</i></a>
+                              </button>
+                            </td>
                         @endif  
                         </tr>
                         @endforeach                       

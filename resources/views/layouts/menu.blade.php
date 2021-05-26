@@ -46,7 +46,7 @@ $route_view = ucwords(str_replace('_', ' ', $route));
             </li>
             <li class="nav-item @if($route == 'problema') active @endif">
                 <a class="nav-link" href="{{ url('/problema') }}">
-                    <i class="material-icons">calculate</i>
+                    <i class="material-icons">bug_report</i>
                     <p>Problemas</p>
                 </a>
             </li>
