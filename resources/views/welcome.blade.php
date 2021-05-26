@@ -5,39 +5,26 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
+                            <i class="material-icons">info_outline</i>
                         </div>
-                        <p class="card-category">Used Space</p>
-                        <h3 class="card-title">49/50
-                            <small>GB</small>
+                        <p class="card-category">Chamados</p>
+                        <h3 class="card-title">
+                            <small>{{ $total_chamados }}</small>
                         </h3>
                     </div>
+                    @if($total_chamados_sem_atendente > 0)
                     <div class="card-footer">
                         <div class="stats">
                             <i class="material-icons text-danger">warning</i>
-                            <a href="javascript:;">Get More Space...</a>
+                            <a href="{{ url('/gerenciar/chamados') }}">Existe chamados sem atribuição</a>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">store</i>
-                        </div>
-                        <p class="card-category">Revenue</p>
-                        <h3 class="card-title">$34,245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
@@ -54,11 +41,29 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">verified</i>
+                        </div>
+                        <p class="card-category">Problemas Resolvidos</p>
+                        <h3 class="card-title">$34,245</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> Last 24 Hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="material-icons">badge</i>
                         </div>
                         <p class="card-category">Followers</p>
                         <h3 class="card-title">+245</h3>
@@ -123,6 +128,7 @@
                 </div>
             </div>
         </div>
+        {{--
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="card">
@@ -414,6 +420,7 @@
                 </div>
             </div>
         </div>
+        --}}
     </div>
 </div>
 @endsection

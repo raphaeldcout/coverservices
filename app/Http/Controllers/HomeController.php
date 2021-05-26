@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Chamado;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,13 @@ class HomeController extends Controller
         if(auth()->user()->hierarquia == 1){
             return redirect('/chamados');
         }
+
+        $chamados = Chamado::all();
+        $total_chamados = count($chamados);
+        $total_chamados_sem_atendente = count($chamados->where('codigo_atendente', ' = ', null));
         
-        return view('welcome');
+        return view('welcome', 
+            ['total_chamados' => $total_chamados, 'total_chamados_sem_atendente' => $total_chamados_sem_atendente]
+        );
     }
 }
