@@ -38,6 +38,8 @@ class ChamadosController extends Controller
 
         $atribuido = null;
 
+        $acoes = null;
+
         $usuarioLogado = auth()->user()->id;
 
         $usuarios = User::select('name', 'id')

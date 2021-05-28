@@ -107,14 +107,14 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Atribuir Status</label>
-                                                         @foreach($editarChamado as $editarChamados)
-                                                            <input type="hidden" id="statusController" name="statusController" value="{{ $editarChamados['status'] }}">
-                                                        @endforeach
-                                                        <select id="status" name="status" class="custom-select">
-                                                            <option value="Aberto" selected>Aberto</option>
-                                                            <option value="Pendente" selected>Pendente</option>
-                                                            <option value="Encerrado" selected>Encerrado</option>
-                                                        </select>
+                                                            @foreach($editarChamado as $editarChamados)
+                                                                <input type="hidden" id="statusController" name="statusController" value="{{ $editarChamados['status'] }}">
+                                                                <select id="status" name="status" class="custom-select">
+                                                                    <option value="Aberto" selected>Aberto</option>
+                                                                    <option value="Pendente" selected>Pendente</option>
+                                                                    <option value="Encerrado" selected>Encerrado</option>
+                                                                </select>
+                                                            @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr>
+                                            
                                             <div class="row">
                                                 <div class="col-md-9">
                                                     <div class="form-group">
@@ -152,22 +152,40 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <hr>
+                                            @else
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating">Status do Chamado</label>
+                                                                @foreach($editarChamado as $editarChamados)
+                                                                    @if($editarChamados['status'] !== 'Aberto')
+                                                                        <input type="hidden" id="statusController" name="statusController" value="{{ $editarChamados['status'] }}">
+                                                                        <select id="status" name="status" class="custom-select">
+                                                                            <option value="Pendente" selected>Pendente</option>
+                                                                            <option value="Encerrado" selected>Encerrado</option>
+                                                                        </select>
+                                                                    @endif    
+                                                                @endforeach                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         @endif
                                     @endif
-
-                                    <div class="row" style="margin-top: 50px">
-                                        <div class="col-md-9">
-                                            <div>
-                                                <input type="file" id="anexo" name="anexo">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     @if($editarChamado == null)
-                                    <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
+                                        <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
                                     @else
-                                    @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
-                                    <button type="submit" class="btn btn-info pull-right">Atualizar Chamado</button>
-                                    @endif
+                                        @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
+                                            <div class="row" style="margin-top: 50px">
+                                                <div class="col-md-9">
+                                                    <div>
+                                                        <input type="file" id="anexo" name="anexo">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-info pull-right">Atualizar Chamado</button>
+                                        @endif
                                     @endif
                                     <div class="clearfix"></div>
                                 </form>
@@ -178,38 +196,40 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 mt-4">
-                <div class="content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="card">
-                                <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Ações Registradas</h4>
-                                </div>
-                                <div class="card-body">
-                                    @if($acoes != null)
-                                    @foreach($acoes as $acao)
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Prévia da ação</label>
-                                                <input id="tituloAcao_{{ $acao['id'] }}" name="tituloAcao_{{ $acao['id'] }}" value="{{ $acao['titulo'] }}" readonly rows="5" class="form-control">
-                                            </div>
-                                        </div>
+    @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 mt-4">
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="card-header card-header-primary">
+                                        <h4 class="card-title">Historico de Ações</h4>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Ação</label>
-                                                <textarea id="descricaoAcao_{{ $acao['id'] }}" name="descricaoAcao_{{ $acao['id'] }}" readonly rows="5" class="form-control">{{ $acao['descricao'] }}</textarea>
-                                            </div>
-                                        </div>
+                                    <div class="card-body">                                    
+                                        @if($acoes != null)
+                                            @foreach($acoes as $acao)
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating">Prévia da ação</label>
+                                                            <input id="tituloAcao_{{ $acao['id'] }}" name="tituloAcao_{{ $acao['id'] }}" value="{{ $acao['titulo'] }}" readonly rows="5" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating">Ação</label>
+                                                            <textarea id="descricaoAcao_{{ $acao['id'] }}" name="descricaoAcao_{{ $acao['id'] }}" readonly rows="5" class="form-control">{{ $acao['descricao'] }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            @endforeach
+                                        @endif
                                     </div>
-                                    <hr>
-                                    @endforeach
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -217,5 +237,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    @endsection
+    @endif
+@endsection
