@@ -10,6 +10,15 @@ $(window).on("load",function () {
         })
     }
     
+    if($('#statusController').val() !== undefined){
+        $('#status option ').each(function(){            
+            console.log($(this).val())
+            if($('#statusController').val() == $(this).val()){
+                $(this).prop('selected', true)
+            }
+        })
+    }
+
 })
 
 function carregarProblema(){
