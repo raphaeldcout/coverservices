@@ -15,29 +15,21 @@ class CreateAcompanhamentosTable extends Migration
     {
         Schema::create('acompanhamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('autor');
-            $table->integer('codigo_solicitante');
-            $table->integer('codigo_atendente');
-            $table->integer('codigo_chamado');
-            $table->string('titulo');
-            $table->text('descricao');
-            $table->timestamps();
-
             $table->foreign('autor')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-
             $table->foreign('codigo_solicitante')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-
             $table->foreign('codigo_atendente')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-
             $table->foreign('codigo_chamado')
                 ->references('id')->on('chamados')
                 ->onDelete('cascade');
+            $table->string('titulo');
+            $table->text('descricao');
+            $table->timestamps(); 
         });
     }
 

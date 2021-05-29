@@ -17,12 +17,10 @@ class CreateAnexosTable extends Migration
             $table->increments('id');
             $table->integer('tipo');
             $table->text('arquivo');
-            $table->integer('codigo_chamado');
-            $table->timestamps();
-
             $table->foreign('codigo_chamado')
                 ->references('id')->on('chamados')
                 ->onDelete('cascade');
+            $table->timestamps(); 
         });
     }
 

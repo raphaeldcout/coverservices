@@ -16,12 +16,10 @@ class CreateProblemasTable extends Migration
         Schema::create('problemas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('codigo_categoria');
-            $table->timestamps();
-
             $table->foreign('codigo_categoria')
                 ->references('id')->on('def_categorias')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
