@@ -46,13 +46,15 @@ class ChamadosController extends Controller
             ->where('hierarquia', 3)
             ->orWhere('hierarquia', 2)
             ->get();
+        
+        $setores = Setor::select('name', 'id')->get();
 
         if ($request->chamadoid != null) {
             $editarChamado = Chamado::retornaDadosChamado($request->chamadoid, $usuarioLogado);
             $atribuido = Chamado::verificaAtribuicao($request->chamadoid);
-            $acoes = Acompanhamento::where('codigo_chamado', $request->chamadoid)->get();
+            $acoes = Acompanhamento::retornaAcompanhamentosChamado($request->chamadoid);
         }
-        $setores = Setor::select('name', 'id')->get();
+
         return view('chamados.chamados', [
             'categorias' => $categorias->toArray(), 'setores' => $setores->toArray(),
             'editarChamado' => $editarChamado, 'atendentes' => $usuarios, 'alterar' => $atribuido, 'acoes' => $acoes
@@ -62,6 +64,8 @@ class ChamadosController extends Controller
     /*Criação do Chamado*/
     public function criarChamado(Request $data)
     {
+        //dd($data->input());
+
         $validate = request()->validate([
             'titulo'    => ['required', 'string'],
             'descricao' => ['required', 'string'],
@@ -69,6 +73,13 @@ class ChamadosController extends Controller
             'problema'  => ['required', 'string'],
             'setor'     => ['required', 'string'],
         ]);
+
+        if($data->input('status') == "Finalizado" || $data->input('status') == "Encerrado"){
+            request()->validate([
+                'tituloAcao'    => ['required', 'string'],
+                'descricaoAcao' => ['required', 'string']
+            ]);
+        }
 
         /*Filtra os dados para salvar*/
         if (count(explode('_', $data['problema'])) > 0) {
@@ -90,17 +101,35 @@ class ChamadosController extends Controller
         /*Atualiza os dados do chamado cadastrado*/
         if ($data['idChamado'] != null) {
             $updateChamado = Chamado::where('id', $data['idChamado'])->first();
+            
+            if(is_null($updateChamado->codigo_atendente) && $data['atendente']){
+                Acompanhamento::create([
+                    'autor' => $data['atendente'],
+                    'codigo_solicitante' => $updateChamado->codigo_solicitante,
+                    'codigo_atendente' => $data['atendente'],
+                    'codigo_chamado' => $data['idChamado'],
+                    'titulo' => "Registro de atribuição",
+                    'descricao' => "Seu chamado foi atribuído para um técnico."
+                ]);
+            }
+
             $updateChamado->status = $data['status'];
-            $updateChamado->codigo_atendente = $data['atendente'];
+            if($data['atendente']){
+                $updateChamado->codigo_atendente = $data['atendente'];
+            }
             $updateChamado->save();
-            //dd($data);
-            Acompanhamento::create([
-                'codigo_solicitante' => $updateChamado['codigo_solicitante'],
-                'codigo_atendente' => $data['atendente'],
-                'codigo_chamado' => $data['idChamado'],
-                'titulo' => $data['tituloAcao'],
-                'descricao' => $data['descricaoAcao']
-            ]);
+
+            if($data['tituloAcao'] != ""){
+                Acompanhamento::create([
+                    'autor' => auth()->user()->id,
+                    'codigo_solicitante' => $updateChamado->codigo_solicitante,
+                    'codigo_atendente' => $updateChamado->codigo_atendente,
+                    'codigo_chamado' => $data['idChamado'],
+                    'titulo' => $data['tituloAcao'],
+                    'descricao' => $data['descricaoAcao']
+                ]);
+            }
+            
             return redirect()->back()->withSuccess('Chamado editado com sucesso.');
         } else {
             if ($validate['titulo'] == '' || $validate['descricao'] == '' || $validate['categoria'] == '-1' || $validate['problema'] == '-1' || $validate['setor'] == '-1') {
@@ -125,7 +154,7 @@ class ChamadosController extends Controller
     public function acompanharChamados()
     {
         $chamados = Chamado::retornaChamadosSolicitante(auth()->user()->id);
-        //dd($chamados);
+       
         return view('chamados.acompanhar', ['chamados' => $chamados->toArray()]);
     }
 
@@ -133,7 +162,7 @@ class ChamadosController extends Controller
     public function gerenciarChamados()
     {
         $chamados = Chamado::retornaTodosOsChamados();
-        //dd($chamados);
+        
         return view('chamados.acompanhar', ['chamados' => $chamados->toArray()]);
     }
 

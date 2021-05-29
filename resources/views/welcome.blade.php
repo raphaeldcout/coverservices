@@ -11,7 +11,7 @@
                         </div>
                         <p class="card-category">Chamados Hoje</p>
                         <h3 class="card-title">
-                            <small>{{ $total_chamados }}</small>
+                            <small>{{ $total_chamados_hoje }}</small>
                         </h3>
                     </div>
                     @if($total_chamados_sem_atendente > 0)
@@ -39,11 +39,11 @@
                             <i class="material-icons">bug_report</i>
                         </div>
                         <p class="card-category">Total de Chamados</p>
-                        <h3 class="card-title">75</h3>
+                        <h3 class="card-title">{{ $total_chamados }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
+                            <i class="material-icons">update</i> Atualizado recentemente
                         </div>
                     </div>
                 </div>
@@ -56,11 +56,11 @@
                             <i class="material-icons">verified</i>
                         </div>
                         <p class="card-category">Problemas Resolvidos</p>
-                        <h3 class="card-title">34.245</h3>
+                        <h3 class="card-title">{{ $total_chamados_encerrados }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
+                            <i class="material-icons">date_range</i> Todos
                         </div>
                     </div>
                 </div>
@@ -73,11 +73,11 @@
                             <i class="material-icons">badge</i>
                         </div>
                         <p class="card-category">Minhas atribuições</p>
-                        <h3 class="card-title">245</h3>
+                        <h3 class="card-title">{{ $minhas_atribuicoes }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
+                            <i class="material-icons">update</i> Atualizado recentemente
                         </div>
                     </div>
                 </div>

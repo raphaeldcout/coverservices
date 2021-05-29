@@ -263,6 +263,18 @@
 
             });
         });
+
+        $('.select-status').change(function () {
+        
+            if($(this).val() === "Finalizado" || $(this).val() === "Encerrado"){
+                $('#tituloAcao').attr('required', true);
+                $('#descricaoAcao').attr('required', true);
+            }else{
+                $('#tituloAcao').attr('required', false);
+                $('#descricaoAcao').attr('required', false);
+            }
+            
+        })
     });
 </script>
 <script>
