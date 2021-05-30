@@ -15,10 +15,10 @@ class CreateChamadosTable extends Migration
     {
         Schema::create('chamados', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('codigo_solicitante');
-            $table->integer('codigo_atendente')->nullable();
-            $table->integer('codigo_problema');
-            $table->integer('codigo_setor');
+            $table->unsignedBigInteger('codigo_solicitante');
+            $table->unsignedBigInteger('codigo_atendente')->nullable();
+            $table->unsignedBigInteger('codigo_problema');
+            $table->unsignedBigInteger('codigo_setor');
             $table->string('titulo');
             $table->text('descricao');
             $table->string('status');

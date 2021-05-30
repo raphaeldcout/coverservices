@@ -15,10 +15,10 @@ class CreateAcompanhamentosTable extends Migration
     {
         Schema::create('acompanhamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('autor');
-            $table->integer('codigo_solicitante');
-            $table->integer('codigo_atendente');
-            $table->integer('codigo_chamado');
+            $table->unsignedBigInteger('autor');
+            $table->unsignedBigInteger('codigo_solicitante');
+            $table->unsignedBigInteger('codigo_atendente');
+            $table->unsignedBigInteger('codigo_chamado');
             $table->string('titulo');
             $table->text('descricao');
             $table->timestamps();
