@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProblemasTable extends Migration
+class CreateAnexosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,19 @@ class CreateProblemasTable extends Migration
      */
     public function up()
     {
-        Schema::create('problemas', function (Blueprint $table) {
+        Schema::create('anexos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->unsignedBigInteger('codigo_categoria');
-            $table->timestamps();
+            $table->integer('tipo');
+            $table->text('arquivo');
+            $table->integer('codigo_chamado')->unsigned();
 
-            $table->foreign('codigo_categoria')
-                ->references('id')->on('def_categorias')
-                ->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::table('anexos', function (Blueprint $table) {
+
+            $table->foreign('codigo_chamado')->references('id')->on('chamados');
+
         });
     }
 
@@ -32,6 +36,6 @@ class CreateProblemasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('problemas');
+        Schema::dropIfExists('anexos');
     }
 }
