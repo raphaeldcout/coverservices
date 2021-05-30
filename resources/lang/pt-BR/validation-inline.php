@@ -1,26 +1,15 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Validation Language Lines
-|--------------------------------------------------------------------------
-|
-| The following language lines contain the default error messages used by
-| the validator class. Some of these rules have multiple versions such
-| as the size rules. Feel free to tweak each of these messages here.
-|
-*/
-
 return [
     'accepted'             => 'Este campo deve ser aceito.',
-    'active_url'           => 'A URL informada não é válida.',
+    'active_url'           => 'A Url informada não é válida.',
     'after'                => 'Esta deve ser uma data após :date.',
     'after_or_equal'       => 'Esta deve ser uma data posterior ou igual a :date.',
     'alpha'                => 'Este campo pode conter apenas letras.',
     'alpha_dash'           => 'Este campo pode conter apenas letras, números, traços e sublinhados.',
     'alpha_num'            => 'Este campo pode conter apenas letras e números',
     'array'                => 'Este campo deve ser uma matriz.',
-    'attached'             => 'Este campo já está anexado.',
+    'attached'             => 'This field is already attached.',
     'before'               => 'Esta deve ser uma data anterior a :date.',
     'before_or_equal'      => 'Esta deve ser uma data anterior ou igual a :date.',
     'between'              => [
@@ -35,11 +24,11 @@ return [
     'date_equals'          => 'Esta deve ser uma data igual a :date.',
     'date_format'          => 'Isso não corresponde ao formato :format.',
     'different'            => 'Este valor deve ser diferente de :other.',
-    'digits'               => 'Este valor deve ter :digits dígitos.',
-    'digits_between'       => 'Este valor deve estar entre :min ou :max dígitos.',
+    'digits'               => 'Este valor deve ter :digits digitos.',
+    'digits_between'       => 'Este valor deve estar entre :min ou :max digitos.',
     'dimensions'           => 'Esta imagem tem dimensões inválidas.',
     'distinct'             => 'Este campo tem um valor duplicado.',
-    'email'                => 'Este deve ser um endereço de e-mail válido.',
+    'email'                => 'Este deve ser um endereço de email válido.',
     'ends_with'            => 'Isso deve terminar com um dos seguintes valores :values.',
     'exists'               => 'O valor selecionado é inválido.',
     'file'                 => 'O conteúdo deve ser um arquivo.',
@@ -90,17 +79,17 @@ return [
         'numeric' => 'O valor deve ser pelo menos :min.',
         'string'  => 'A sequência deve ser pelo menos :min characters.',
     ],
-    'multiple_of'          => 'O valor deve ser um múltiplo de :value',
+    'multiple_of'          => 'The value must be a multiple of :value',
     'not_in'               => 'O valor selecionado é inválido.',
     'not_regex'            => 'Este formato é inválido.',
     'numeric'              => 'Este deve ser um número.',
     'password'             => 'A senha está incorreta.',
     'present'              => 'Este campo deve estar presente.',
-    'prohibited'           => 'Este campo é proibido.',
-    'prohibited_if'        => 'Este campo é proibido quando :other é :value.',
-    'prohibited_unless'    => 'Este campo é proibido a menos que :other esteja em :values.',
+    'prohibited'           => 'This field is prohibited.',
+    'prohibited_if'        => 'This field is prohibited when :other is :value.',
+    'prohibited_unless'    => 'This field is prohibited unless :other is in :values.',
     'regex'                => 'Este formato é inválido.',
-    'relatable'            => 'Este campo pode não estar associado a este recurso.',
+    'relatable'            => 'This field may not be associated with this resource.',
     'required'             => 'Este campo é obrigatório.',
     'required_if'          => 'Este campo é obrigatório quando :other é :value.',
     'required_unless'      => 'Este campo é obrigatório, a menos que :other esteja em :values.',

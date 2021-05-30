@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                     @if($editarChamado != null)
-
+                                    @if($editarChamado[0]['status'] != "Encerrado")
                                     <div class="row">
                                         <div class="col-md-9">
                                             @if(Auth::user()->hierarquia == 2 || Auth::user()->hierarquia == 3)
@@ -174,13 +174,13 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     @endif
-
+                                    @endif
+                                    
                                     @if($editarChamado == null)
                                     <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
                                     @else
-
+                                    @if($editarChamado[0]['status'] != "Encerrado")
                                     <div class="row" style="margin-top: 50px">
                                         <div class="col-md-9">
                                             <div>
@@ -189,7 +189,11 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-info pull-right">Atualizar Chamado</button>
-
+                                    @else
+                                    <div class="alert alert-success" role="alert">
+                                        Chamado Encerrado!
+                                    </div>
+                                    @endif
                                     @endif
                                     <div class="clearfix"></div>
                                 </form>

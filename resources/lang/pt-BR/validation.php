@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Validation Language Lines
-|--------------------------------------------------------------------------
-|
-| The following language lines contain the default error messages used by
-| the validator class. Some of these rules have multiple versions such
-| as the size rules. Feel free to tweak each of these messages here.
-|
-*/
-
 return [
     'accepted'             => 'O campo :attribute deve ser aceito.',
     'active_url'           => 'O campo :attribute deve conter uma URL válida.',
@@ -20,7 +9,7 @@ return [
     'alpha_dash'           => 'O campo :attribute deve conter apenas letras, números e traços.',
     'alpha_num'            => 'O campo :attribute deve conter apenas letras e números .',
     'array'                => 'O campo :attribute deve conter um array.',
-    'attached'             => 'Este :attribute já está anexado.',
+    'attached'             => 'This :attribute is already attached.',
     'before'               => 'O campo :attribute deve conter uma data anterior a :date.',
     'before_or_equal'      => 'O campo :attribute deve conter uma data inferior ou igual a :date.',
     'between'              => [
@@ -90,17 +79,17 @@ return [
         'numeric' => 'O campo :attribute deve conter um número superior ou igual a :min.',
         'string'  => 'O campo :attribute deve conter no mínimo :min caracteres.',
     ],
-    'multiple_of'          => 'O :attribute deve ser um múltiplo de :value',
+    'multiple_of'          => 'The :attribute must be a multiple of :value',
     'not_in'               => 'O campo :attribute contém um valor inválido.',
     'not_regex'            => 'O formato do valor :attribute é inválido.',
     'numeric'              => 'O campo :attribute deve conter um valor numérico.',
     'password'             => 'A senha está incorreta.',
     'present'              => 'O campo :attribute deve estar presente.',
-    'prohibited'           => 'O campo :attribute é proibido.',
-    'prohibited_if'        => 'O campo :attribute é proibido quando :other é :value.',
-    'prohibited_unless'    => 'O campo :attribute é proibido a menos que :other esteja em :values.',
+    'prohibited'           => 'The :attribute field is prohibited.',
+    'prohibited_if'        => 'The :attribute field is prohibited when :other is :value.',
+    'prohibited_unless'    => 'The :attribute field is prohibited unless :other is in :values.',
     'regex'                => 'O formato do valor informado no campo :attribute é inválido.',
-    'relatable'            => 'Este :attribute pode não estar associado a este recurso.',
+    'relatable'            => 'This :attribute may not be associated with this resource.',
     'required'             => 'O campo :attribute é obrigatório.',
     'required_if'          => 'O campo :attribute é obrigatório quando o valor do campo :other é igual a :value.',
     'required_unless'      => 'O campo :attribute é obrigatório a menos que :other esteja presente em :values.',
