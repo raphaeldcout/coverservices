@@ -111,8 +111,19 @@ class ChamadosController extends Controller
                     'titulo' => "Registro de atribuição",
                     'descricao' => "Seu chamado foi atribuído para um técnico."
                 ]);
+            }else if($updateChamado->codigo_atendente && $data['atendente']){
+                if($updateChamado->codigo_atendente != (int)$data['atendente']){
+                    Acompanhamento::create([
+                        'autor' => auth()->user()->id,
+                        'codigo_solicitante' => $updateChamado->codigo_solicitante,
+                        'codigo_atendente' => $data['atendente'],
+                        'codigo_chamado' => $data['idChamado'],
+                        'titulo' => "Registro de transferência de chamado",
+                        'descricao' => "Seu chamado foi transferido para outro técnico."
+                    ]);
+                }
             }
-
+            
             $updateChamado->status = $data['status'];
             if($data['atendente']){
                 $updateChamado->codigo_atendente = $data['atendente'];
