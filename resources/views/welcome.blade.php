@@ -92,12 +92,13 @@
                     <div class="card-body">
                         <h4 class="card-title">Chamados por Dia</h4>
                         <p class="card-category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span>
+                            (em breve).
                         </p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">access_time</i> updated 4 minutes ago
+                            <i class="material-icons">access_time</i> atualizado há 4 minutos
                         </div>
                     </div>
                 </div>
@@ -109,11 +110,11 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Problemas por Setores</h4>
-                        <p class="card-category">Last Campaign Performance</p>
+                        <p class="card-category">(em breve).</p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
+                            <i class="material-icons">access_time</i> atualizado há 1 semana atrás
                         </div>
                     </div>
                 </div>
@@ -124,12 +125,12 @@
                         <div class="ct-chart" id="completedTasksChart"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Completed Tasks</h4>
-                        <p class="card-category">Last Campaign Performance</p>
+                        <h4 class="card-title">Minhas Atribuiçoes</h4>
+                        <p class="card-category">(em breve).</p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
+                            <i class="material-icons">access_time</i> atualizado há 2 dias atrás
                         </div>
                     </div>
                 </div>
