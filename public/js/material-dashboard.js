@@ -188,7 +188,7 @@ md = {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       dataDailySalesChart = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
         series: [
           [12, 17, 7, 17, 23, 18, 38]
         ]
@@ -313,7 +313,7 @@ md = {
       /* ----------==========     Daily Sales Chart initialization    ==========---------- */
 
       dataDailySalesChart = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
         series: [
           [12, 17, 7, 17, 23, 18, 38]
         ]
@@ -342,9 +342,9 @@ md = {
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
       dataCompletedTasksChart = {
-        labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
+        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
         series: [
-          [230, 750, 450, 300, 280, 240, 200, 190]
+          [23, 75, 45, 30, 28, 24, 20, 19, 55, 45, 36, 43,]
         ]
       };
 
@@ -353,7 +353,7 @@ md = {
           tension: 0
         }),
         low: 0,
-        high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: 200, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
           right: 0,
