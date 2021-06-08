@@ -23,6 +23,9 @@ $route_view = ucwords(str_replace('_', ' ', $route));
                     <p>Gerenc. Chamados</p>
                 </a>
             </li>
+            @if(Auth::user()->hierarquia == 2) 
+            <hr> 
+            @endif
             @endif
 
             @if(Auth::user()->hierarquia == 3)
@@ -52,6 +55,7 @@ $route_view = ucwords(str_replace('_', ' ', $route));
             </li>
             <hr>
             @endif
+
             <li class="nav-item @if($route == 'chamados') active @endif">
                 <a class="nav-link" href="{{ url('/chamados') }}">
                     <i class="material-icons">content_paste</i>

@@ -23,16 +23,18 @@ class SetorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {           
-        return view('setor.setor');
+    {      
+        if(auth()->user()->hierarquia == 3){
+            return view('setor.setor');
+        }else{
+            return redirect()->route('dashboard')->withErrors(['message' => 'Acesso negado.']);
+        }  
     }
     public function cadastrarSetor(Request $data)
     {
-        //return redirect()->back()->withErrors(['message' => 'Não foi possivel cadastrar Setor.']);
-
         Setor::create([
-           'name' => $data['nome'],
-           'apelido' => $data['apelido'],
+            'name' => $data['nome'],
+            'apelido' => $data['apelido'],
         ]);
 
         return redirect()->back()->withSuccess('Setor cadastrado com sucesso.');
