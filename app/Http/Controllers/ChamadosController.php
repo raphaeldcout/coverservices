@@ -98,6 +98,10 @@ class ChamadosController extends Controller
         if ($data['atendente'] == -1) {
             $data['atendente'] = null;
         }
+
+        if ($data['prioridade'] == -1) {
+            $data['prioridade'] = null;
+        }
         /*Atualiza os dados do chamado cadastrado*/
         if ($data['idChamado'] != null) {
             $updateChamado = Chamado::where('id', $data['idChamado'])->first();
@@ -124,6 +128,12 @@ class ChamadosController extends Controller
                 }
             }
             
+            if($updateChamado->prioridade && $data['prioridade']){
+                if($updateChamado->prioridade != $data['prioridade']){
+                    $updateChamado->prioridade = $data['prioridade'];
+                    $updateChamado->codigo_atendente =  auth()->user()->id;
+                }
+            }
             $updateChamado->status = $data['status'];
             if($data['atendente']){
                 $updateChamado->codigo_atendente = $data['atendente'];
@@ -134,7 +144,7 @@ class ChamadosController extends Controller
                 Acompanhamento::create([
                     'autor' => auth()->user()->id,
                     'codigo_solicitante' => $updateChamado->codigo_solicitante,
-                    'codigo_atendente' => $updateChamado->codigo_atendente,
+                    'codigo_atendente' => $updateChamado->codigo_atendente??'',
                     'codigo_chamado' => $data['idChamado'],
                     'titulo' => $data['tituloAcao'],
                     'descricao' => $data['descricaoAcao']
@@ -155,7 +165,7 @@ class ChamadosController extends Controller
                 'titulo' => $data['titulo'],
                 'descricao' => $data['descricao'],
                 'status' => 'Aberto',
-                'prioridade' => null,
+                'prioridade' => $data['prioridade']
             ]);
             return redirect()->back()->withSuccess('Chamado criado com sucesso.');
         }
