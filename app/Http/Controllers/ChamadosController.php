@@ -127,13 +127,21 @@ class ChamadosController extends Controller
                     ]);
                 }
             }
-            
-            if($updateChamado->prioridade && $data['prioridade']){
+        
+            if($data['prioridade']){
                 if($updateChamado->prioridade != $data['prioridade']){
                     $updateChamado->prioridade = $data['prioridade'];
-                    $updateChamado->codigo_atendente =  auth()->user()->id;
-                }
+                    Acompanhamento::create([
+                        'autor' => auth()->user()->id,
+                        'codigo_solicitante' => $updateChamado->codigo_solicitante,
+                        'codigo_atendente' => $data['atendente'],
+                        'codigo_chamado' => $data['idChamado'],
+                        'titulo' => "Registro de prioridade do chamado",
+                        'descricao' => "Prioridade do chamado: {$data['prioridade']}"
+                    ]);
+                }   
             }
+
             $updateChamado->status = $data['status'];
             if($data['atendente']){
                 $updateChamado->codigo_atendente = $data['atendente'];
