@@ -144,7 +144,7 @@ class ChamadosController extends Controller
                 Acompanhamento::create([
                     'autor' => auth()->user()->id,
                     'codigo_solicitante' => $updateChamado->codigo_solicitante,
-                    'codigo_atendente' => $updateChamado->codigo_atendente??'',
+                    'codigo_atendente' => $updateChamado->codigo_atendente,
                     'codigo_chamado' => $data['idChamado'],
                     'titulo' => $data['tituloAcao'],
                     'descricao' => $data['descricaoAcao']
