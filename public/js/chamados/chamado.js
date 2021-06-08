@@ -1,5 +1,5 @@
 
-$(window).on("load",function () {    
+$(window).on("load",function () {
     carregarProblema();
     if($('#dataChamado').val() !== undefined){
         $('table tr td input').each(function(){
@@ -9,10 +9,18 @@ $(window).on("load",function () {
             $(this).val(removeHora[0]+'/'+dataChamado[1]+'/'+dataChamado[0])
         })
     }
-    
+
     if($('#statusController').val() !== undefined){
-        $('#status option ').each(function(){            
+        $('#status option ').each(function(){
             if($('#statusController').val() == $(this).val()){
+                $(this).prop('selected', true)
+            }
+        })
+    }
+
+    if($('#prioridadeController').val() !== undefined){
+        $('#prioridade option ').each(function(){
+            if($('#prioridadeController').val() == $(this).val()){
                 $(this).prop('selected', true)
             }
         })
@@ -33,17 +41,17 @@ function carregarProblema(){
                 categoria: categoria
             },
             beforeSend: function() {
-   
+
             },
             complete: function(data) {
-   
+
             },
             success: function(data) {
                data = JSON.parse(JSON.stringify(data));
                problema = data.problemas;
                var count = 0;
                var idSelect = '';
-               
+
                 console.log(data)
                $('#problema option').each(function(){
                    if($(this).val() != '-1'){
@@ -51,7 +59,7 @@ function carregarProblema(){
                    }
                })
                problema.forEach((element,i)=>{
-                option = $('<option value="' + element.id + '">' + element.name + '</option>');                
+                option = $('<option value="' + element.id + '">' + element.name + '</option>');
                if(count == 1){
                 $('#problema').attr('selected', true)
                 }else{
@@ -60,7 +68,7 @@ function carregarProblema(){
                 $('#problema').append(option);
                 count++
                 idSelect = element.id
-               })        
+               })
                if(count == 1) {
                    $('#problema').val(idSelect).prop('selected', true)
                }
@@ -68,5 +76,5 @@ function carregarProblema(){
             error: function(data) {
             }
         });
-    })    
+    })
 }

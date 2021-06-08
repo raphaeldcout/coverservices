@@ -149,6 +149,9 @@
                                             <div class="col-md-9">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Prioridade</label>
+                                                    @foreach($editarChamado as $editarChamados)
+                                                    <input type="hidden" id="prioridadeController" name="prioridadeController" value="{{ $editarChamados['prioridade'] }}">
+                                                    @endforeach
                                                     <select id="prioridade" name="prioridade" class="custom-select" required>
                                                         <option value="-1" selected>-- Selecione --</option>
                                                         <option value="Baixa" >Baixa</option>
@@ -190,7 +193,7 @@
                                     </div>
                                     @endif
                                     @endif
-                                    
+
                                     @if($editarChamado == null)
                                     <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
                                     @else
