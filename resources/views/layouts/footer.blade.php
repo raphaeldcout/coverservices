@@ -10,13 +10,13 @@
             </div>
             <div class="modal-body">
                 @if($errors->any())
-                    @foreach ($errors->all() as $error)
-                        {{$error}}
-                        <br>
-                    @endforeach
+                @foreach ($errors->all() as $error)
+                {{$error}}
+                <br>
+                @endforeach
                 @endif
                 @if(session('success'))
-                    {{session('success')}}
+                {{session('success')}}
                 @endif
             </div>
             <div class="modal-footer">
@@ -79,19 +79,21 @@
 <script src="/js/material-dashboard.js?v=4.1.2" type="text/javascript"></script>
 
 <script src="/js/chamados/chamado.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
     $(document).ready(function() {
 
         @if(count($errors) > 0)
-            $('#modalResponse').modal('show');
-            $('.modal-title').html('Ops! Ocorreu um erro.');
-            $('.modal-header').addClass('bg-danger');
+        $('#modalResponse').modal('show');
+        $('.modal-title').html('Ops! Ocorreu um erro.');
+        $('.modal-header').addClass('bg-danger');
         @endif
 
         @if(session('success'))
-            $('#modalResponse').modal('show');
-            $('.modal-title').html('Tudo certo!');
-            $('.modal-header').addClass('bg-success');
+        $('#modalResponse').modal('show');
+        $('.modal-title').html('Tudo certo!');
+        $('.modal-header').addClass('bg-success');
         @endif
 
 
@@ -263,16 +265,16 @@
             });
         });
 
-        $('.select-status').change(function () {
-        
-            if($(this).val() === "Finalizado" || $(this).val() === "Encerrado"){
+        $('.select-status').change(function() {
+
+            if ($(this).val() === "Finalizado" || $(this).val() === "Encerrado") {
                 $('#tituloAcao').attr('required', true);
                 $('#descricaoAcao').attr('required', true);
-            }else{
+            } else {
                 $('#tituloAcao').attr('required', false);
                 $('#descricaoAcao').attr('required', false);
             }
-            
+
         })
     });
 </script>
