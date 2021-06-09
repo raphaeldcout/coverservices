@@ -109,7 +109,7 @@
                         <div class="ct-chart" id="websiteViewsChart"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Problemas por Setores</h4>
+                        <h4 class="card-title">Chamados Resolvidos</h4>
                         <p class="card-category">(em breve).</p>
                     </div>
                     <div class="card-footer">

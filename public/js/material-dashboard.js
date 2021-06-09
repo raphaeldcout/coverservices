@@ -185,8 +185,7 @@ md = {
 
   initDocumentationCharts: function() {
     if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
-      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
+      
       dataDailySalesChart = {
         labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
         series: [
@@ -199,7 +198,7 @@ md = {
           tension: 0
         }),
         low: 0,
-        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: 50, 
         chartPadding: {
           top: 0,
           right: 0,
@@ -310,9 +309,8 @@ md = {
   initDashboardPageCharts: function() {
 
     if ($('#dailySalesChart').length != 0 || $('#completedTasksChart').length != 0 || $('#websiteViewsChart').length != 0) {
-      /* ----------==========     Daily Sales Chart initialization    ==========---------- */
 
-      dataDailySalesChart = {
+      /*dataDailySalesChart = {
         labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
         series: [
           [12, 17, 7, 17, 23, 18, 38]
@@ -324,7 +322,7 @@ md = {
           tension: 0
         }),
         low: 0,
-        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: 50,
         chartPadding: {
           top: 0,
           right: 0,
@@ -335,13 +333,13 @@ md = {
 
       var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
-      md.startAnimationForLineChart(dailySalesChart);
+      md.startAnimationForLineChart(dailySalesChart);*/
 
 
 
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
-      dataCompletedTasksChart = {
+      /*dataCompletedTasksChart = {
         labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
         series: [
           [23, 75, 45, 30, 28, 24, 20, 19, 55, 45, 36, 43,]
@@ -353,7 +351,7 @@ md = {
           tension: 0
         }),
         low: 0,
-        high: 200, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: 200, 
         chartPadding: {
           top: 0,
           right: 0,
@@ -364,13 +362,12 @@ md = {
 
       var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
-      // start animation for the Completed Tasks Chart - Line Chart
-      md.startAnimationForLineChart(completedTasksChart);
+      md.startAnimationForLineChart(completedTasksChart);*/
 
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-      var dataWebsiteViewsChart = {
+      /*var dataWebsiteViewsChart = {
         labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
         series: [
           [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
@@ -402,8 +399,7 @@ md = {
       ];
       var websiteViewsChart = Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
 
-      //start animation for the Emails Subscription Chart
-      md.startAnimationForBarChart(websiteViewsChart);
+      md.startAnimationForBarChart(websiteViewsChart);*/
     }
   },
 

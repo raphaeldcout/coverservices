@@ -82,7 +82,101 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
+    
     $(document).ready(function() {
+
+        /* -----------------------------------------------------------------------*/
+
+        // Gráfico dailySalesChart
+        dataDailySalesChart = {
+            labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            series: [
+            [{{$grafic_chamados_por_dia}}]
+            ]
+        };
+
+        optionsDailySalesChart = {
+            lineSmooth: Chartist.Interpolation.cardinal({
+            tension: 0
+            }),
+            low: 0,
+            high: 50,
+            chartPadding: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+            },
+        }
+
+        var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+
+        md.startAnimationForLineChart(dailySalesChart);
+
+        // Gráfico websiteViewsChart
+        var dataWebsiteViewsChart = {
+            labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+            series: [
+            [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+
+            ]
+        };
+        var optionsWebsiteViewsChart = {
+            axisX: {
+            showGrid: false
+            },
+            low: 0,
+            high: 1000,
+            chartPadding: {
+            top: 0,
+            right: 5,
+            bottom: 0,
+            left: 0
+            }
+        };
+        var responsiveOptions = [
+            ['screen and (max-width: 640px)', {
+            seriesBarDistance: 5,
+            axisX: {
+                labelInterpolationFnc: function(value) {
+                return value[0];
+                }
+            }
+            }]
+        ];
+        var websiteViewsChart = Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+
+        md.startAnimationForBarChart(websiteViewsChart);
+
+        // Gráfico completedTasksChart
+        dataCompletedTasksChart = {
+            labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+            series: [
+            [23, 75, 45, 30, 28, 24, 20, 19, 55, 45, 36, 43,]
+            ]
+        };
+
+        optionsCompletedTasksChart = {
+            lineSmooth: Chartist.Interpolation.cardinal({
+            tension: 0
+            }),
+            low: 0,
+            high: 200, 
+            chartPadding: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+            }
+        }
+
+        var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+
+        md.startAnimationForLineChart(completedTasksChart);
+
+
+        /* -----------------------------------------------------------------------*/
+
 
         @if(count($errors) > 0)
         $('#modalResponse').modal('show');
