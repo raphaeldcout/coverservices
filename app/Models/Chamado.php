@@ -12,12 +12,13 @@ class Chamado extends Model
 
     public static function retornaTodosOsChamados() {
         return Chamado::select(
-                'chamados.id as idChamado', 
-                'chamados.titulo', 
-                'chamados.status', 
-                'chamados.descricao', 
+                'chamados.id as idChamado',
+                'chamados.titulo',
+                'chamados.status',
+                'chamados.descricao',
                 'chamados.created_at',
                 'chamados.codigo_atendente',
+                'chamados.prioridade',
                 'users.name'
                 )
                 ->join('problemas', 'problemas.id', '=', 'chamados.codigo_problema')
@@ -29,9 +30,9 @@ class Chamado extends Model
     public static function retornaChamadosSolicitante($codigo_usuario) {
         return Chamado::select(
                 'chamados.id as idChamado',
-                'chamados.titulo', 
-                'chamados.status', 
-                'chamados.descricao', 
+                'chamados.titulo',
+                'chamados.status',
+                'chamados.descricao',
                 'chamados.created_at',
                 'chamados.codigo_atendente',
                 'users.name'
@@ -47,10 +48,10 @@ class Chamado extends Model
         return Chamado::select(
                 'chamados.id as idChamado',
                 'setors.name as setorNome',
-                'def_categorias.name as categoriaNome', 
+                'def_categorias.name as categoriaNome',
                 'problemas.name as problemaNome',
                 'chamados.*',
-                'def_categorias.*', 
+                'def_categorias.*',
                 'problemas.*'
                 )
                 ->join('problemas', 'chamados.codigo_problema', '=', 'problemas.id')
@@ -65,12 +66,12 @@ class Chamado extends Model
     public static function gerenciarChamados($idChamado) {
         return Chamado::select(
                 'chamados.id as idChamado',
-                'setors.name as setorNome', 
+                'setors.name as setorNome',
                 'chamados.status',
-                'def_categorias.name as categoriaNome', 
+                'def_categorias.name as categoriaNome',
                 'problemas.name as problemaNome',
                 'chamados.*',
-                'def_categorias.*', 
+                'def_categorias.*',
                 'problemas.*'
                 )
                 ->join('problemas', 'chamados.codigo_problema','=','problemas.id')

@@ -24,8 +24,12 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {           
-        return view('usuario.usuario');
+    {
+        if (auth()->user()->hierarquia == 3) {
+            return view('usuario.usuario');
+        } else {
+            return redirect()->route('dashboard')->withErrors(['message' => 'Acesso negado.']);
+        }        
     }
     public function cadastrarUsuario(Request $data)
     {

@@ -17,7 +17,7 @@ class CreateAcompanhamentosTable extends Migration
             $table->increments('id');
             $table->integer('autor')->unsigned();
             $table->integer('codigo_solicitante')->unsigned();
-            $table->integer('codigo_atendente')->unsigned();
+            $table->integer('codigo_atendente')->unsigned()->nullable();
             $table->integer('codigo_chamado')->unsigned();
             $table->string('titulo');
             $table->text('descricao');

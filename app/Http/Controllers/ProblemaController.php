@@ -24,9 +24,13 @@ class ProblemaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {           
-        $categorias = def_categoria::select('name', 'id')->get();            
-        return view('problema.problema', ['categorias' => $categorias->toArray()]);
+    {
+        if (auth()->user()->hierarquia == 3) {
+            $categorias = def_categoria::select('name', 'id')->get();
+            return view('problema.problema', ['categorias' => $categorias->toArray()]);
+        } else {
+            return redirect()->route('dashboard')->withErrors(['message' => 'Acesso negado.']);
+        }        
     }
     public function cadastrarProblema(Request $data)
     {

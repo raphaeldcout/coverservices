@@ -23,8 +23,12 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {           
-        return view('categoria.categoria');
+    {
+        if (auth()->user()->hierarquia == 3) {
+            return view('categoria.categoria');
+        } else {
+            return redirect()->route('dashboard')->withErrors(['message' => 'Acesso negado.']);
+        }         
     }
     public function cadastrarCategoria(Request $data)
     {
