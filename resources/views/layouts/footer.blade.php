@@ -91,7 +91,7 @@
         dataDailySalesChart = {
             labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
             series: [
-            [{{$grafic_chamados_por_dia}}]
+            [@if(isset($grafic_chamados_por_dia)){{$grafic_chamados_por_dia}}@endif]
             ]
         };
 
