@@ -38,4 +38,11 @@ class SetorController extends Controller
         return redirect()->back()->withSuccess('Setor cadastrado com sucesso.');
     }
 
+    /*Lista de setor*/
+    public function listasetSetor()
+    {
+        $setores = Setor::retornaSetores(auth()->user()->id);
+     
+        return view('setor.listaset', ['setores' => $setores->toArray()]);
+    }
 }

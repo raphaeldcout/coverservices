@@ -40,4 +40,11 @@ class UsuarioController extends Controller
         return redirect()->back()->withSuccess('Usuário cadastrado com sucesso.');
     }
 
+    /*Lista de Usuario*/
+    public function listausuUsuario()
+    {
+        $usuarios = User::retornaUser(auth()->user()->id);
+     
+        return view('usuario.listausu', ['usuarios' => $usuarios->toArray()]);
+    }
 }

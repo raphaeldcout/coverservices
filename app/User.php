@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function retornaUser() {
+        return User::select(
+                'users.id as idUsuario', 
+                'users.name', 
+                'users.email'
+                )
+                ->orderBy('users.name', 'asc')
+                ->get();
+    }
+
 }

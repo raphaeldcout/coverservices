@@ -40,4 +40,11 @@ class ProblemaController extends Controller
         return redirect()->back()->withSuccess('Problema cadastrado com sucesso.');
     }
 
+    /*Lista de Problema*/
+    public function listaprobProblema()
+    {
+        $problemas = Problema::retornaProblemas(auth()->user()->id);
+     
+        return view('problema.listaprob', ['problemas' => $problemas->toArray()]);
+    }
 }

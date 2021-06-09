@@ -37,5 +37,13 @@ class CategoriaController extends Controller
 
         return redirect()->back()->withSuccess('Categoria cadastrado com sucesso.');
     }
+    
+    /*Lista de Categoria*/
+    public function listacatCategoria()
+    {
+        $categorias = def_categoria::retornaCategoria(auth()->user()->id);
+     
+        return view('categoria.listacat', ['categorias' => $categorias->toArray()]);
+    }
 
 }

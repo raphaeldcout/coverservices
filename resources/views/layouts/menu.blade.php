@@ -27,25 +27,25 @@ $route_view = ucwords(str_replace('_', ' ', $route));
 
             @if(Auth::user()->hierarquia == 3)
             <li class="nav-item @if($route == 'usuario') active @endif">
-                <a class="nav-link" href="{{ url('/usuario') }}">
+                <a class="nav-link" href="{{ url('listausu/usuario') }}">
                     <i class="material-icons">person_add</i>
                     <p>Usuário</p>
                 </a>
             </li>
             <li class="nav-item @if($route == 'setor') active @endif">
-                <a class="nav-link" href="{{ url('/setor') }}">
+                <a class="nav-link" href="{{ url('listaset/setor') }}">
                     <i class="material-icons">account_tree</i>
                     <p>Setor</p>
                 </a>
             </li>
             <li class="nav-item @if($route == 'categoria') active @endif">
-                <a class="nav-link" href="{{ url('/categoria') }}">
+                <a class="nav-link" href="{{ url('listacat/categoria') }}">
                     <i class="material-icons">backup_table</i>
                     <p>Categoria</p>
                 </a>
             </li>
             <li class="nav-item @if($route == 'problema') active @endif">
-                <a class="nav-link" href="{{ url('/problema') }}">
+                <a class="nav-link" href="{{ url('listaprob/problema') }}">
                     <i class="material-icons">bug_report</i>
                     <p>Problemas</p>
                 </a>
