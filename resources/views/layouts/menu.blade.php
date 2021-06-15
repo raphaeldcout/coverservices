@@ -29,25 +29,25 @@ $route_view = ucwords(str_replace('_', ' ', $route));
             @endif
 
             @if(Auth::user()->hierarquia == 3)
-            <li class="nav-item @if($route == 'usuario') active @endif">
+            <li class="nav-item @if($route == 'usuario' || $route == 'listausu') active @endif">
                 <a class="nav-link" href="{{ url('listausu/usuario') }}">
                     <i class="material-icons">person_add</i>
                     <p>Usuário</p>
                 </a>
             </li>
-            <li class="nav-item @if($route == 'setor') active @endif">
+            <li class="nav-item @if($route == 'setor' || $route == 'listaset') active @endif">
                 <a class="nav-link" href="{{ url('listaset/setor') }}">
                     <i class="material-icons">account_tree</i>
                     <p>Setor</p>
                 </a>
             </li>
-            <li class="nav-item @if($route == 'categoria') active @endif">
+            <li class="nav-item @if($route == 'categoria' || $route == 'listacat') active @endif">
                 <a class="nav-link" href="{{ url('listacat/categoria') }}">
                     <i class="material-icons">backup_table</i>
                     <p>Categoria</p>
                 </a>
             </li>
-            <li class="nav-item @if($route == 'problema') active @endif">
+            <li class="nav-item @if($route == 'problema' || $route == 'listaprob') active @endif">
                 <a class="nav-link" href="{{ url('listaprob/problema') }}">
                     <i class="material-icons">bug_report</i>
                     <p>Problemas</p>
