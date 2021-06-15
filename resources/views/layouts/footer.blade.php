@@ -78,7 +78,7 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="/js/material-dashboard.js?v=4.1.2" type="text/javascript"></script>
 
-<script src="/js/chamados/chamado.js"></script>
+<script src="/js/chamados/chamado.js?v=5.0.0"></script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
