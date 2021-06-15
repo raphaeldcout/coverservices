@@ -198,13 +198,6 @@
                                     <button type="submit" class="btn btn-info pull-right">Cadastrar chamado</button>
                                     @else
                                     @if($editarChamado[0]['status'] != "Encerrado")
-                                    <div class="row" style="margin-top: 50px">
-                                        <div class="col-md-9">
-                                            <div>
-                                                <input type="file" id="anexo" name="anexo">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <button type="submit" class="btn btn-info pull-right">Atualizar Chamado</button>
                                     @else
                                     <div class="alert alert-success" role="alert">

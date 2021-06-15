@@ -25,21 +25,21 @@
                         <th class="text-center">
                           Categoria
                         </th>
-                        <th class="text-center">
+                        <th class="">
                           Ações
                         </th>
                       </thead>
                       <tbody>
                         @foreach($problemas as $problema)
                         <tr>
-                          <td class="">
+                          <td class="text-center">
                             <label id='name' class="text-secondary">{{ $problema['name'] }}</label>
                           </td>
                           <td class="text-center">
                             <label id='categoria' class="text-secondary">{{ $problema['codigo_categoria'] }}</label>
                           </td>
                           <td>
-                            <button type="button" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm">
+                            <button type="button" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm text-center">
                               <a href="{{ route('problema', ['problemaid' => $problema['idProblema'] ]) }}"><i class="material-icons">grading</i></a>
                             </button>
                           </td>

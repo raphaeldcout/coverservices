@@ -25,21 +25,21 @@
                         <th class="text-center">
                           email
                         </th>
-                        <th class="text-center">
+                        <th class="">
                           Ações
                         </th>
                       </thead>
                       <tbody>
                         @foreach($usuarios as $usuario)
                         <tr>
-                          <td class="">
+                          <td class="text-center">
                             <label id='name' class="text-secondary">{{ $usuario['name'] }}</label>
                           </td>
                           <td class="text-center">
                             <label id='email' class="text-secondary">{{ $usuario['email'] }}</label>
                           </td>
                           <td>
-                            <button type="button" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm">
+                            <button type="button" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm text-center">
                               <a href="{{ route('usuario', ['usuarioid' => $usuario['idUsuario'] ]) }}"><i class="material-icons">grading</i></a>
                             </button>
                           </td>
